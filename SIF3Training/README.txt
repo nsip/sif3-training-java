@@ -17,19 +17,8 @@
 # Summary
 #########################################################################################################
 
-The SIF3 Framework is a Java Framework that enables developers to efficiently implement SIF3 
-services (consumers and/or providers). It fully encapsulates the low level SIF3 infrastructure. It also
-provides a basic environment provider which is core to SIF3.
+The SIF3 Training is a Java project designed for SIF3 Training courses.
 
-The framework has some basic demo classes that illustrate how to use the framework. It also has a
-developer's guide that can be found in the "documentation/UserGuide" directory.
-
-There is a set of pre-built framework libraries in the "release" directory. Please refer to the developer's
-guide for more details an the libraries.
-
-NOTE:
-As of May 17, 2014 the framework works for SIF3 with a DIRECT & BROKERED environment and IMMEDIATE responses. It
-doesn't support DELAYED responses, yet. It supports events in a BROKERED environment, though.
 
 #########################################################################################################
 # Version History and Update
@@ -49,7 +38,7 @@ Click on the button marked "ZIP" available from the Code tab.
 
 Option 2 - Using a Git client.
 ==============================
-From the command-line type: git clone git://github.com/nsip/sif3-framework-java.git
+From the command-line type: git clone git://github.com/nsip/sif3-training-java.git
 
 Note that if you want to use this option but don't have the client installed, it can be 
 downloaded from http://git-scm.com/download.
