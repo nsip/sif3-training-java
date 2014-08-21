@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="SIF3Training">
+        <wb-resource deploy-path="/" source-path="/war"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/config"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/config/hibernate"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/config/consumers"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/config/providers"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/sif3demo/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/sif3test/src"/>
+        <property name="java-output-path" value="/SIF3Training/build/classes"/>
+        <property name="context-root" value="SIF3Training"/>
+    </wb-module>
+</project-modules>

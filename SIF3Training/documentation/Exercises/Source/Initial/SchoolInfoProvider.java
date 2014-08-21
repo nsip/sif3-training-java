@@ -1,0 +1,186 @@
+/*
+ * SchoolInfoProvider.java
+ * Created: 18/08/2014
+ *
+ * Copyright 2014 Systemic Pty Ltd
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License 
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied.
+ * See the License for the specific language governing permissions and limitations under the License.
+ */
+
+package sif3demo.provider;
+
+import java.util.HashMap;
+import java.util.List;
+
+import sif.dd.au30.model.ObjectFactory;
+import sif.dd.au30.model.SchoolCollectionType;
+import sif.dd.au30.model.SchoolInfoType;
+import sif3.common.conversion.MarshalFactory;
+import sif3.common.conversion.ModelObjectInfo;
+import sif3.common.conversion.UnmarshalFactory;
+import sif3.common.exception.PersistenceException;
+import sif3.common.exception.UnsupportedQueryException;
+import sif3.common.model.PagingInfo;
+import sif3.common.model.SIFContext;
+import sif3.common.model.SIFZone;
+import sif3.common.ws.CreateOperationStatus;
+import sif3.common.ws.OperationStatus;
+import sif3.infra.rest.provider.BaseProvider;
+import au.com.systemic.framework.utils.FileReaderWriter;
+
+/**
+ * @author Joerg Huber
+ * 
+ */
+public class SchoolInfoProvider extends BaseProvider
+{
+  private HashMap<String, SchoolInfoType> schools = new HashMap<String, SchoolInfoType>();
+  
+  @SuppressWarnings("unused")
+  private ObjectFactory dmObjectFactory = new ObjectFactory();
+
+  /*
+   * Will read a number of SchoolInfo Objects from a XML file. The location of the XML File is stored in the provider.properties file
+   * in the "provider.school.file.location" property.
+   */
+  public SchoolInfoProvider()
+  {
+    super();
+
+    // Load all school so that we can do some real stuff here.
+    String schoolFile = getServiceProperties().getPropertyAsString("provider.school.file.location", null);
+    if (schoolFile != null)
+    {
+      try
+      {
+        String inputXML = FileReaderWriter.getFileContent(schoolFile);
+        SchoolCollectionType schoolList = (SchoolCollectionType)getUnmarshaller().unmarshalFromXML(inputXML, getMultiObjectClassInfo().getObjectType());
+        if ((schoolList != null) && (schoolList.getSchoolInfo() != null))
+        {
+          for (SchoolInfoType schoolInfo : schoolList.getSchoolInfo())
+          {
+            schools.put(schoolInfo.getRefId(), schoolInfo);
+          }
+          logger.debug("Loaded " + schools.size() + " schools into memory.");
+        }
+      }
+      catch (Exception ex)
+      {
+        ex.printStackTrace();
+        logger.debug("Loaded " + schools.size() + " schools into memory.");
+      }
+    }
+  }
+  
+  //----------------------------------
+  // Start Exercise 5
+  //----------------------------------
+  @Override
+  public MarshalFactory getMarshaller()
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public UnmarshalFactory getUnmarshaller()
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public ModelObjectInfo getSingleObjectClassInfo()
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public ModelObjectInfo getMultiObjectClassInfo()
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo) throws PersistenceException, UnsupportedQueryException
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+  //----------------------------------
+  // End of Exercise 5
+  //----------------------------------
+
+
+  //--------------------------------------------------------------------
+  // Optional: Implement the following methods as part of Exercise 5...
+  //--------------------------------------------------------------------
+  @Override
+  public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+  {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+  {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  @Override
+  public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context) throws IllegalArgumentException, PersistenceException
+  {
+    // TODO Auto-generated method stub
+    return false;
+  }
+  //--------------------------------------------------------------------
+  // End Optional part of Exercise 5...
+  //--------------------------------------------------------------------
+
+  @Override
+  public void shutdown()
+  {
+    // Leave as null for the moment...
+  }
+}

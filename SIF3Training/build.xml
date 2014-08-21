@@ -1,0 +1,130 @@
+<project name="SIF3Training" basedir="." default="03-jar-components">
+
+	<property name="project.basedir" value="${basedir}"/>
+
+	<!-- *************************** -->
+	<!-- Load default property files -->
+	<!-- *************************** -->
+	<property file="${project.basedir}/ant.properties"/>
+
+	<!-- ********************* -->
+	<!-- Environment Variables -->
+	<!-- ********************* -->
+	<property name="app.name" value="${app.name}" />
+	<property name="build.dir" value="${project.basedir}/${builddir}"/>
+	<property name="web.dir.name" value="war"/>
+	<property name="dist.dir" value="${build.dir}/dist"/>
+	<property name="class.dir" value="${build.dir}/classes" />
+	<property name="web.lib.root.dir" value="${project.basedir}/${web.dir.name}/WEB-INF/lib" />
+	<property name="config.dir" value="${project.basedir}/config" />
+	<property name="verbose" value="true" />
+
+	<path id="classpath">
+		<fileset dir="${web.lib.root.dir}">
+			<include name="**/*.jar" />
+			<include name="**/*.zip" />
+		</fileset>
+		<fileset dir="${servlet.lib.dir}">
+			<include name="${servlet.lib}" />
+		</fileset>
+		<pathelement path="${class.dir}" />
+	</path>
+
+	<!-- print some varaibles -->
+	<target name="00-env" description="Show Ant variables">
+		<echo message="project.basedir: ${project.basedir}"/>
+		<echo message="app.name: ${app.name}"/>
+		<echo message="build.dir: ${build.dir}"/>
+		<echo message="web.dir.name: ${web.dir.name}"/>
+		<echo message="dist.dir: ${dist.dir}"/>
+		<echo message="class.dir: ${class.dir}"/>
+		<echo message="web.lib.root.dir: ${web.lib.root.dir}"/>
+		<echo message="config.dir: ${config.dir}"/>
+		<echo message="servlet.lib.dir: ${servlet.lib.dir}"/>
+		<echo message="servlet.lib: ${servlet.lib}"/>
+		<echo message="deploy.install.dir: ${deploy.install.dir}"/>
+		<echo message="javaversion: ${javaversion}"/>
+		<echo message="classpath: ${toString:classpath}"/>
+	</target>
+
+	<!-- Check Dependencies -->
+	<target name="01-check-dependencies" depends="02-clean, compile-all" description="Check Build Dependencies"/>
+
+	<!-- Clean environment. -->
+	<target name="02-clean" description="Deletes the build directory">
+		<delete dir="${dist.dir}" />
+		<delete dir="${class.dir}" />
+	</target>
+
+	<!-- ***************** -->
+	<!-- Environment setup -->
+	<!-- ***************** -->
+	<target name="init">
+		<mkdir dir="${class.dir}"/>
+		<mkdir dir="${dist.dir}"/>
+	</target>
+
+	<!-- ******************************* -->
+	<!-- Compile Targets for Environment -->
+	<!-- ******************************* -->
+
+	<!-- Main Compile Target -->
+	<target name="compile-all" depends="init" description="Compile all sources">
+
+		<!-- Must have sif3Common first -->
+		<echo message="Compile: sif3demo Classes"/>
+		<javac destdir="${class.dir}" debug="on" verbose="false">
+			<compilerarg value="-Xbootclasspath/p:${toString:classpath}"/>
+			<src path="${project.basedir}/sif3demo/src" />
+		</javac>
+
+		<!-- copy all non-java files across -->
+		<copy todir="${class.dir}">
+			<fileset dir="${project.basedir}/sif3demo/src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Main Jar Target -->
+	<target name="03-jar-components" depends="compile-all" description="Create JAR files for all components">
+		<echo message="Create Jar: sif3training-${frameworkversion}.jar"/>
+		<jar destfile="${dist.dir}/sif3training-${frameworkversion}.jar">
+			<fileset dir="${class.dir}" includes="**/sif3demo/**" excludes="**/readme.txt"/>
+		</jar>
+	</target>
+
+	<!-- *************** -->
+	<!-- Create WAR file -->
+	<!-- *************** -->
+	<target name="80-build-war" depends="03-jar-components" description="Package WAR for distribution">
+		<delete file="${dist.dir}/${app.name}.war}"/>
+
+		<!-- get all jar files -->
+		<copy todir="${web.lib.root.dir}">
+			<fileset dir="${dist.dir}" includes="*.jar"/>
+		</copy>
+
+		<echo message="War Creation: ${project.basedir}/${web.dir.name}"/>
+		<jar destfile="${dist.dir}/${app.name}.war">
+			<fileset dir="${project.basedir}/${web.dir.name}">
+				<exclude name="**/readme.txt"/>
+				<exclude name=".*"/>
+				<!-- ignore eclipse files -->
+			</fileset>
+		</jar>
+
+		<!-- remove project jars from WEB-INF/lib again because it is in the war file now. -->
+		<delete file="${web.lib.root.dir}/sif3training-${frameworkversion}.jar"/>
+	</target>
+
+
+	<!-- ************************************ -->
+	<!-- Deploy to local web or app container -->
+	<!-- ************************************ -->
+	<target name="85-deploy-to-Local-WebContainer" depends="80-build-war" description="Deploy War to Local Web Container">
+		<echo message="Copy ${dist.dir}/${app.name}.war to ${deploy.install.dir}"/>
+		<copy file="${dist.dir}/${app.name}.war" todir="${deploy.install.dir}"/>
+	</target>
+
+</project>

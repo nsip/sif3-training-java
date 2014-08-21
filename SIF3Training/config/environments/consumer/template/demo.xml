@@ -1,0 +1,18 @@
+<environment xmlns="http://www.sifassociation.org/infrastructure/3.0.1">
+    <solutionId>test</solutionId>
+    <authenticationMethod>Basic</authenticationMethod>
+    <instanceId/>
+    <userToken/>
+    <consumerName></consumerName>
+    <applicationInfo>
+        <applicationKey></applicationKey>
+        <supportedInfrastructureVersion>3.0.1</supportedInfrastructureVersion>
+        <dataModelNamespace>http://www.sifassociation.org/au/datamodel/1.3</dataModelNamespace>
+        <transport>REST</transport>
+        <applicationProduct>
+            <vendorName>Systemic Pty Ltd</vendorName>
+            <productName>Demo Consumer</productName>
+            <productVersion>1.0.6</productVersion>
+        </applicationProduct>
+    </applicationInfo>
+</environment>
