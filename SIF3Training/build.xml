@@ -13,19 +13,20 @@
 	<property name="app.name" value="${app.name}" />
 	<property name="build.dir" value="${project.basedir}/${builddir}"/>
 	<property name="web.dir.name" value="war"/>
+	<property name="lib.dir" value="${project.basedir}/lib"/>
 	<property name="dist.dir" value="${build.dir}/dist"/>
 	<property name="class.dir" value="${build.dir}/classes" />
-	<property name="web.lib.root.dir" value="${project.basedir}/${web.dir.name}/WEB-INF/lib" />
+	<property name="web-inf.dir" value="${project.basedir}/${web.dir.name}/WEB-INF"/>
+	<property name="web.lib.root.dir" value="${web-inf.dir}/lib" />
+	<property name="web-xml.root.dir" value="${project.basedir}/documentation/deploy" />
 	<property name="config.dir" value="${project.basedir}/config" />
+    <property name="config.jar.name" value="sif3infra-config.jar" />
 	<property name="verbose" value="true" />
 
 	<path id="classpath">
 		<fileset dir="${web.lib.root.dir}">
 			<include name="**/*.jar" />
 			<include name="**/*.zip" />
-		</fileset>
-		<fileset dir="${servlet.lib.dir}">
-			<include name="${servlet.lib}" />
 		</fileset>
 		<pathelement path="${class.dir}" />
 	</path>
@@ -35,13 +36,15 @@
 		<echo message="project.basedir: ${project.basedir}"/>
 		<echo message="app.name: ${app.name}"/>
 		<echo message="build.dir: ${build.dir}"/>
+		<echo message="lib.dir: ${lib.dir}"/>
 		<echo message="web.dir.name: ${web.dir.name}"/>
+		<echo message="web-inf.dir: ${web-inf.dir}"/>
+		<echo message="web-xml.root.dir: ${web-xml.root.dir}"/>
 		<echo message="dist.dir: ${dist.dir}"/>
 		<echo message="class.dir: ${class.dir}"/>
 		<echo message="web.lib.root.dir: ${web.lib.root.dir}"/>
 		<echo message="config.dir: ${config.dir}"/>
-		<echo message="servlet.lib.dir: ${servlet.lib.dir}"/>
-		<echo message="servlet.lib: ${servlet.lib}"/>
+        <echo message="config.jar.name: ${config.jar.name}"/>
 		<echo message="deploy.install.dir: ${deploy.install.dir}"/>
 		<echo message="javaversion: ${javaversion}"/>
 		<echo message="classpath: ${toString:classpath}"/>
@@ -94,10 +97,71 @@
 		</jar>
 	</target>
 
+	<target name="jar-config">
+		<echo message="Jar: ${dist.dir}/${config.jar.name}" />
+        <mkdir dir="${dist.dir}/tmp"/>
+        <copy todir="${dist.dir}/tmp" flatten="true">
+            <fileset dir="${config.dir}" excludes="environments/**,consumers/**">
+                <include name="*/**"/>
+            </fileset>
+        </copy>
+        <jar destfile="${dist.dir}/${config.jar.name}">
+            <fileset dir="${dist.dir}/tmp">
+            	<include name="*.*"/>
+            </fileset>
+        </jar>
+		<delete dir="${dist.dir}/tmp" />
+	</target>
+	
 	<!-- *************** -->
 	<!-- Create WAR file -->
 	<!-- *************** -->
-	<target name="80-build-war" depends="03-jar-components" description="Package WAR for distribution">
+    <target name="70-build-for-Tomcat-no-config" depends="prepare-for-tomcat" description="Package WAR for distribution to Tomcat">
+        <antcall target="80-build-war"/>
+    </target>
+
+    <target name="71-build-for-Tomcat-with-config" depends="prepare-for-tomcat,jar-config" description="Package WAR for distribution to Tomcat">
+        <antcall target="80-build-war"/>
+    </target>
+
+    <target name="prepare-for-tomcat">
+        <copy file="${web-xml.root.dir}/Tomcat6/web.xml" todir="${web-inf.dir}" overwrite="true"/>
+        <delete>
+            <fileset dir="${dist.dir}" includes="*.jar"/>
+            <fileset dir="${web.lib.root.dir}" includes="jersey-*.jar"/>
+        </delete>
+        <copy todir="${web.lib.root.dir}" overwrite="true">
+            <fileset dir="${lib.dir}/jersey/Tomcat6" includes="*.jar"/>
+        </copy>
+        <copy todir="${web.lib.root.dir}" overwrite="true">
+            <fileset dir="${lib.dir}/jaxb" includes="*.jar"/>
+        </copy>
+    </target>	
+
+    <target name="75-build-for-JBoss-no-config" depends="prepare-for-jboss" description="Package WAR for distribution to JBoss">
+        <antcall target="80-build-war"/>
+    </target>
+
+    <target name="76-build-for-JBoss-with-config" depends="prepare-for-jboss,jar-config" description="Package WAR for distribution to JBoss">
+        <antcall target="80-build-war"/>
+    </target>
+
+	<target name="prepare-for-jboss">
+        <copy file="${web-xml.root.dir}/JBoss6/web.xml" todir="${web-inf.dir}" overwrite="true"/>
+        <delete>
+            <fileset dir="${dist.dir}" includes="*.jar"/>
+            <fileset dir="${web.lib.root.dir}" includes="jersey-*.jar"/>
+            <fileset dir="${web.lib.root.dir}" includes="jaxb-impl.jar"/>
+        </delete>
+        <delete>
+            <fileset dir="${web.lib.root.dir}" includes="jaxb-impl.jar"/>
+        </delete>
+        <copy todir="${web.lib.root.dir}" overwrite="true">
+            <fileset dir="${lib.dir}/jersey/JBoss6" includes="*.jar"/>
+        </copy>
+    </target>
+
+    <target name="80-build-war" depends="03-jar-components">
 		<delete file="${dist.dir}/${app.name}.war}"/>
 
 		<!-- get all jar files -->
@@ -116,15 +180,17 @@
 
 		<!-- remove project jars from WEB-INF/lib again because it is in the war file now. -->
 		<delete file="${web.lib.root.dir}/sif3training-${frameworkversion}.jar"/>
+        <delete file="${web.lib.root.dir}/${config.jar.name}"/>
 	</target>
 
 
 	<!-- ************************************ -->
 	<!-- Deploy to local web or app container -->
 	<!-- ************************************ -->
+	<!--	
 	<target name="85-deploy-to-Local-WebContainer" depends="80-build-war" description="Deploy War to Local Web Container">
 		<echo message="Copy ${dist.dir}/${app.name}.war to ${deploy.install.dir}"/>
 		<copy file="${dist.dir}/${app.name}.war" todir="${deploy.install.dir}"/>
 	</target>
-
+-->
 </project>
