@@ -148,7 +148,7 @@
 
 	<target name="prepare-for-jboss">
         <copy file="${web-xml.root.dir}/JBoss6/web.xml" todir="${web-inf.dir}" overwrite="true"/>
-        <delete>
+        <delete failonerror="false">
             <fileset dir="${dist.dir}" includes="*.jar"/>
             <fileset dir="${web.lib.root.dir}" includes="jersey-*.jar"/>
             <fileset dir="${web.lib.root.dir}" includes="jaxb-impl.jar"/>
