@@ -55,47 +55,58 @@ import au.com.systemic.framework.utils.StringUtils;
  */
 public class SchoolInfoProvider extends BaseProvider
 {
-  protected final Logger logger = Logger.getLogger(getClass());
+	protected final Logger logger = Logger.getLogger(getClass());
 
-  private static DataModelUnmarshalFactory unmarshaller = new DataModelUnmarshalFactory();
-  private static DataModelMarshalFactory marshaller = new DataModelMarshalFactory();
+	private static DataModelUnmarshalFactory unmarshaller = new DataModelUnmarshalFactory();
+	private static DataModelMarshalFactory marshaller = new DataModelMarshalFactory();
 
-  private HashMap<String, SchoolInfoType> schools = new HashMap<String, SchoolInfoType>();
-  
-  private ObjectFactory dmObjectFactory = new ObjectFactory();
+	private static HashMap<String, SchoolInfoType> schools = new HashMap<String, SchoolInfoType>();
 
-  /*
-   * Will read a number of SchoolInfo Objects from a XML file. The location of the XML File is stored in the provider.properties file
-   * in the "provider.school.file.location" property.
-   */
-  public SchoolInfoProvider()
-  {
-    super();
+	private ObjectFactory dmObjectFactory = new ObjectFactory();
 
-    // Load all school so that we can do some real stuff here.
-    String schoolFile = getServiceProperties().getPropertyAsString("provider.school.file.location", null);
-    if (schoolFile != null)
-    {
-      try
-      {
-        String inputXML = FileReaderWriter.getFileContent(schoolFile);
-        SchoolCollectionType schoolList = (SchoolCollectionType)getUnmarshaller().unmarshalFromXML(inputXML, getMultiObjectClassInfo().getObjectType());
-        if ((schoolList != null) && (schoolList.getSchoolInfo() != null))
-        {
-          for (SchoolInfoType schoolInfo : schoolList.getSchoolInfo())
-          {
-            schools.put(schoolInfo.getRefId(), schoolInfo);
-          }
-          logger.debug("Loaded " + schools.size() + " schools into memory.");
-        }
-      }
-      catch (Exception ex)
-      {
-        ex.printStackTrace();
-        logger.debug("Loaded " + schools.size() + " schools into memory.");
-      }
-    }
-  }
+	/*
+	 * Will read a number of SchoolInfo Objects from a XML file. The location of the XML File is
+	 * stored in the provider.properties file in the "provider.school.file.location" property.
+	 */
+	public SchoolInfoProvider()
+	{
+		super();
+		logger.debug("Constructor for SchoolInfoProvider has been called.");
+		if (schools == null)
+		{
+			logger.debug("Constructor for SchoolInfoProvider called for the first time. Try to load students from XML file...");
+			// Load all school so that we can do some real stuff here.
+			String schoolFile = getServiceProperties().getPropertyAsString("provider.school.file.location", null);
+			if (schoolFile != null)
+			{
+				try
+				{
+					String inputXML = FileReaderWriter.getFileContent(schoolFile);
+					SchoolCollectionType schoolList = (SchoolCollectionType) getUnmarshaller().unmarshalFromXML(inputXML, getMultiObjectClassInfo().getObjectType());
+					if ((schoolList != null) && (schoolList.getSchoolInfo() != null))
+					{
+						schools = new HashMap<String, SchoolInfoType>();
+						for (SchoolInfoType schoolInfo : schoolList.getSchoolInfo())
+						{
+							schools.put(schoolInfo.getRefId(), schoolInfo);
+						}
+						logger.debug("Loaded " + schools.size() + " schools into memory.");
+					}
+				}
+				catch (Exception ex)
+				{
+					ex.printStackTrace();
+					logger.debug("Loaded " + schools.size() + " schools into memory.");
+				}
+			}
+		}
+		// If schools are still null then something must have failed and would have been logged. For
+		// the purpose of making things work ok we initialise the students hashmap now. It will avoid null pointer errors.
+		if (schools == null)
+		{
+			schools = new HashMap<String, SchoolInfoType>();
+		}
+	}
   
   //----------------------------------
   // Start Exercise 5
