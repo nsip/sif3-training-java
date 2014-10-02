@@ -60,7 +60,7 @@ public class SchoolInfoProvider extends BaseProvider
 	private static DataModelUnmarshalFactory unmarshaller = new DataModelUnmarshalFactory();
 	private static DataModelMarshalFactory marshaller = new DataModelMarshalFactory();
 
-	private static HashMap<String, SchoolInfoType> schools = new HashMap<String, SchoolInfoType>();
+	private static HashMap<String, SchoolInfoType> schools = null; //= new HashMap<String, SchoolInfoType>();
 
 	private ObjectFactory dmObjectFactory = new ObjectFactory();
 
