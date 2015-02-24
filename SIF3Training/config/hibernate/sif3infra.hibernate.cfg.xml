@@ -54,7 +54,7 @@
 
         <property name="dialect">sif3.common.persist.common.SQLiteDialect</property>
         <property name="connection.driver_class">org.sqlite.JDBC</property>
-        <property name="connection.url">jdbc:sqlite:/Development/SIF3Training/DB/Data/SIF3Infra.sqliteDB</property>
+        <property name="connection.url">jdbc:sqlite:/Development/GitHubRepositories/SIF3Training/SIF3Training/DB/Data/SIF3Infra.sqliteDB</property>
         <!--property name="connection.url">jdbc:sqlite:/DEV/eclipseWorkspace/SIF3Demo/DB/Data/SIF3Infra.sqliteDB</property-->
         <property name="connection.username"></property>
         <property name="connection.password"></property>
