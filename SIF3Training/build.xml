@@ -125,13 +125,13 @@
     </target>
 
     <target name="prepare-for-tomcat">
-        <copy file="${web-xml.root.dir}/Tomcat6/web.xml" todir="${web-inf.dir}" overwrite="true"/>
+        <copy file="${web-xml.root.dir}/Tomcat7/web.xml" todir="${web-inf.dir}" overwrite="true"/>
         <delete>
             <fileset dir="${dist.dir}" includes="*.jar"/>
             <fileset dir="${web.lib.root.dir}" includes="jersey-*.jar"/>
         </delete>
         <copy todir="${web.lib.root.dir}" overwrite="true">
-            <fileset dir="${lib.dir}/jersey/Tomcat6" includes="*.jar"/>
+            <fileset dir="${lib.dir}/jersey/Tomcat" includes="*.jar"/>
         </copy>
         <copy todir="${web.lib.root.dir}" overwrite="true">
             <fileset dir="${lib.dir}/jaxb" includes="*.jar"/>
