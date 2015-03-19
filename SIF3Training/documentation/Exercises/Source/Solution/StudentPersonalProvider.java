@@ -338,12 +338,40 @@ public class StudentPersonalProvider extends AUDataModelProviderWithEvents<Stude
 			logger.debug("Query Condition (given by service path): " + queryCriteria);
 		}
 		
-		//----------------------------------------------------------------------------------------------------
-		// Start Exercise: Implement service path query
-		// Hint: Check query predicate. Refer to section 5.7 in Developer's Guide
-		// Hint: For TechingGroup ServicePath you can use the teachingGroupStudents hashmap as return values.
-		//----------------------------------------------------------------------------------------------------
-		return null;
+		// Check if the query is SchoolInfo or TeachingGroup
+		List<QueryPredicate> predicates = queryCriteria.getPredicates();
+		if ((predicates != null) && (predicates.size() == 1)) // ensure it is a valid condition
+		{
+			if ("SchoolInfos".equals(predicates.get(0).getSubject()))
+			{
+				// Assume all students known from the file are at the same school.
+				return retrieve(zone, context, pagingInfo, metadata);
+			}
+			else if ("TeachingGroups".equals(predicates.get(0).getSubject()))
+			{
+		    	logger.debug("Retrieve Students for Teaching Group (class) "+predicates.get(0).getValue()+" for "+getZoneAndContext(zone, context)+" and RequestMetadata = "+metadata);
+
+		    	ArrayList<StudentPersonalType> studentList = fetchStudents(teachingGroupStudents, pagingInfo);
+		    	StudentCollectionType studentCollection = dmObjectFactory.createStudentCollectionType();
+		    	if (studentList != null)
+		    	{
+		    		studentCollection.getStudentPersonal().addAll(studentList);
+		    		return studentCollection;
+		    	}
+		    	else
+		    	{
+		    		return null;
+		    	}
+		    }
+			else
+			{
+				throw new UnsupportedQueryException("The query condition (driven by the service path) "+queryCriteria+" is not supported by the provider.");
+			}
+		}
+		else // not supported query (only single level service path query supported by this provider)
+		{
+			throw new UnsupportedQueryException("The query condition (driven by the service path) "+queryCriteria+" is not supported by the provider.");
+		}
 	}
 
     /* (non-Javadoc)
