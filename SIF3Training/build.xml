@@ -124,7 +124,7 @@
         <antcall target="80-build-war"/>
     </target>
 
-    <target name="prepare-for-tomcat">
+    <target name="prepare-for-tomcat" depends="init">
         <copy file="${web-xml.root.dir}/Tomcat7/web.xml" todir="${web-inf.dir}" overwrite="true"/>
         <delete>
             <fileset dir="${dist.dir}" includes="*.jar"/>
@@ -146,7 +146,7 @@
         <antcall target="80-build-war"/>
     </target>
 
-	<target name="prepare-for-jboss">
+	<target name="prepare-for-jboss" depends="init">
         <copy file="${web-xml.root.dir}/JBoss6/web.xml" todir="${web-inf.dir}" overwrite="true"/>
         <delete failonerror="false">
             <fileset dir="${dist.dir}" includes="*.jar"/>
