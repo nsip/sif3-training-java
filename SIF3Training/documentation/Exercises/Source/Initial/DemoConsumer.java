@@ -20,6 +20,10 @@ import java.util.List;
 
 import sif.dd.au30.conversion.DataModelUnmarshalFactory;
 import sif.dd.au30.model.StudentCollectionType;
+import sif3.common.header.HeaderValues.RequestType;
+import sif3.common.model.PagingInfo;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.ServicePathPredicate;
 import sif3.common.ws.Response;
 import sif3.infra.rest.consumer.ConsumerLoader;
 import sif3demo.consumer.StudentPersonalConsumer;
@@ -37,7 +41,7 @@ public class DemoConsumer
 //	private final static String MULTI_STUDENT_FILE_NAME = "C:/Development/GitHubRepositories/SIF3Training/SIF3Training/TestData/xml/input/StudentPersonals5.xml";
 	private static final String CONSUMER_ID = "StudentConsumer";
 	
-//	private static final RequestType REQUEST_TYPE = RequestType.IMMEDIATE;
+	private static final RequestType REQUEST_TYPE = RequestType.IMMEDIATE;
 	
 	@SuppressWarnings("unused")
     private void printResponses(List<Response> responses, StudentPersonalConsumer consumer)
@@ -156,7 +160,44 @@ public class DemoConsumer
    * End of Section for Exercise 4
    -------------------------------*/
 
+	/*
+	 * ----------------------------------
+	 * Section for Exercise: Service Path
+	 * ----------------------------------
+	 */
+	/*
+	 * Possible Solution for Exercise: Service Path
+	 */	
+	private void getStudentsByServicePath(String parent, String value, StudentPersonalConsumer consumer)
+	{
+	    System.out.println("Start 'Get Students By Service Path '...");
+	    
+	    //TODO: Service Path Exercise:
+	    
+	    //Step 1: Create a QueryCriteria and add a 'Predicate' (where clause) below
+		
+		try
+		{
+			//Step 2: Call consumer.retrieveByServicePath() with the QueryCriteria and other parameters.
+		    //        Refer to Javadoc for details of the parameters to use.
+		
+			//Step 3: Print out the result - comment out the line below....
+			//printResponses(responses, consumer);
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		System.out.println("Finished 'Get Students By Service Path'.");
+	}
 	
+	/*
+	 * ----------------------------------------- 
+	 * End of Section for Exercise: Service Path
+	 * -----------------------------------------
+	 */
+
+
 	public static void main(String[] args)
 	{
 		DemoConsumer demo = new DemoConsumer();
@@ -173,6 +214,9 @@ public class DemoConsumer
 			// Use for Exercise 4 - uncomment the 2 lines below
 			//demo.deleteStudents(consumer);
 			//demo.updateStudent(consumer);
+			
+			// Use for Exercise: Service Path - uncomment the line below
+			//demo.getStudentsByServicePath("TeachingGroups", "64A309DA063A2E35B359D75101A8C3D1", consumer);
 		}
 
 		ConsumerLoader.shutdown();

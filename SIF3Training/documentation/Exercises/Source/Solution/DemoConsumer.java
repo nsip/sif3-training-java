@@ -25,6 +25,8 @@ import sif.dd.au30.conversion.DataModelUnmarshalFactory;
 import sif.dd.au30.model.StudentCollectionType;
 import sif3.common.header.HeaderValues.RequestType;
 import sif3.common.model.PagingInfo;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.ServicePathPredicate;
 import sif3.common.utils.UUIDGenerator;
 import sif3.common.ws.BulkOperationResponse;
 import sif3.common.ws.OperationStatus;
@@ -259,6 +261,40 @@ public class DemoConsumer
 	 * End of Section for Exercise 4 
 	 * -------------------------------
 	 */
+	
+	/*
+	 * ----------------------------------
+	 * Section for Exercise: Service Path
+	 * ----------------------------------
+	 */
+	/*
+	 * Possible Solution for Exercise: Service Path
+	 */	
+	private void getStudentsByServicePath(String parent, String value, StudentPersonalConsumer consumer)
+	{
+	    System.out.println("Start 'Get Students By Service Path '...");
+	    
+		QueryCriteria criteria = new QueryCriteria();
+		criteria.addPredicate(new ServicePathPredicate(parent, value));
+		try
+		{
+			// Get all students for a service path cirteria. Get 5 students per page (i.e page 1). 
+			List<Response> responses = consumer.retrieveByServicePath(criteria, new PagingInfo(5, 1), null, REQUEST_TYPE);
+			System.out.println("Responses from attempt to Get All Students for '" + criteria + "': ");
+			printResponses(responses, consumer);
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		System.out.println("Finished 'Get Students By Service Path'.");
+	}
+	
+	/*
+	 * ----------------------------------------- 
+	 * End of Section for Exercise: Service Path
+	 * -----------------------------------------
+	 */
 
 	public static void main(String[] args)
 	{
@@ -276,6 +312,9 @@ public class DemoConsumer
 			// Use for Exercise 4 - uncomment the 2 lines below
 			//demo.deleteStudents(consumer);
 			//demo.updateStudent(consumer);
+			
+			// Use for Exercise: Service Path - uncomment the line below
+			//demo.getStudentsByServicePath("TeachingGroups", "64A309DA063A2E35B359D75101A8C3D1", consumer);
 		}
 
 		ConsumerLoader.shutdown();
