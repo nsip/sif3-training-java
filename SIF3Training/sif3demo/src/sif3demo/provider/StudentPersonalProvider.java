@@ -33,6 +33,7 @@ import sif.dd.au30.model.TeachingGroupCollectionType;
 import sif.dd.au30.model.TeachingGroupType.StudentList;
 import sif.dd.au30.model.TeachingGroupType.StudentList.TeachingGroupStudent;
 import sif3.common.conversion.ModelObjectInfo;
+import sif3.common.exception.DataTooLargeException;
 import sif3.common.exception.PersistenceException;
 import sif3.common.exception.UnmarshalException;
 import sif3.common.exception.UnsupportedMediaTypeExcpetion;
@@ -42,7 +43,6 @@ import sif3.common.interfaces.QueryProvider;
 import sif3.common.interfaces.SIFEventIterator;
 import sif3.common.model.PagingInfo;
 import sif3.common.model.QueryCriteria;
-import sif3.common.model.QueryPredicate;
 import sif3.common.model.RequestMetadata;
 import sif3.common.model.SIFContext;
 import sif3.common.model.SIFEvent;
@@ -345,6 +345,16 @@ public class StudentPersonalProvider extends AUDataModelProviderWithEvents<Stude
 		// Hint: For TechingGroup ServicePath you can use the teachingGroupStudents hashmap as return values.
 		//----------------------------------------------------------------------------------------------------
 		return null;
+	}
+
+    /*
+     * (non-Javadoc)
+     * @see sif3.common.interfaces.QueryProvider#retrieveByQBE(java.lang.Object, sif3.common.model.SIFZone, sif3.common.model.SIFContext, sif3.common.model.PagingInfo, sif3.common.model.RequestMetadata)
+     */
+	public Object retrieveByQBE(Object exampleObject, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata)
+		throws PersistenceException, UnsupportedQueryException, DataTooLargeException
+	{
+		throw new UnsupportedQueryException("QBE not supported for StudentPersonalProvider");
 	}
 
     /* (non-Javadoc)

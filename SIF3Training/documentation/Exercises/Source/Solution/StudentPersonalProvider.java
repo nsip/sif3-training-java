@@ -33,6 +33,7 @@ import sif.dd.au30.model.TeachingGroupCollectionType;
 import sif.dd.au30.model.TeachingGroupType.StudentList;
 import sif.dd.au30.model.TeachingGroupType.StudentList.TeachingGroupStudent;
 import sif3.common.conversion.ModelObjectInfo;
+import sif3.common.exception.DataTooLargeException;
 import sif3.common.exception.PersistenceException;
 import sif3.common.exception.UnmarshalException;
 import sif3.common.exception.UnsupportedMediaTypeExcpetion;
@@ -375,7 +376,17 @@ public class StudentPersonalProvider extends AUDataModelProviderWithEvents<Stude
 		}
 	}
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * @see sif3.common.interfaces.QueryProvider#retrieveByQBE(java.lang.Object, sif3.common.model.SIFZone, sif3.common.model.SIFContext, sif3.common.model.PagingInfo, sif3.common.model.RequestMetadata)
+     */
+	public Object retrieveByQBE(Object exampleObject, SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata)
+		throws PersistenceException, UnsupportedQueryException, DataTooLargeException
+	{
+		throw new UnsupportedQueryException("QBE not supported for StudentPersonalProvider");
+	}
+
+	/* (non-Javadoc)
      * @see sif3.common.interfaces.Provider#createMany(java.lang.Object, sif3.common.model.SIFZone, sif3.common.model.SIFContext)
      */
     @Override
