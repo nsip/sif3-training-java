@@ -1,0 +1,70 @@
+<k12Students xmlns="http://www.sifassociation.org/datamodel/na/3.2">
+    <k12Student refId="abbb4567-0E11-40ee-3aDD-fD1cBb6B1001">
+        <identity>
+            <name>
+                <firstName>Martina</firstName>
+                <lastName>Mills-Rhode</lastName>
+            </name>
+            <identification>
+                <studentId>e0012mm1</studentId>
+            </identification>
+        </identity>
+        <contact>
+            <addressList>
+                <address addressType="Physical">
+                    <street>
+                        <line1>123 New Rose Lane</line1>
+                    </street>
+                    <city>Portland</city>
+                    <stateProvince>OR</stateProvince>
+                    <postalCode>7012</postalCode>
+                </address>
+            </addressList>
+            <phoneNumberList>
+                <phoneNumber phoneNumberType="Home">
+                    <phoneNumberIndicator>Yes</phoneNumberIndicator>
+                    <number>09976566678</number>
+                </phoneNumber>
+            </phoneNumberList>
+        </contact>
+        <demographic>
+            <birthdate>2001-05-05</birthdate>
+            <sex>Female</sex>
+            <countryOfBirthCode>US</countryOfBirthCode>
+        </demographic>
+    </k12Student>
+    <k12Student refId="abcd47Fc-0ee6-4AAA-4123-fDab676B1003">
+        <identity>
+            <name>
+                <firstName>Rob</firstName>
+                <lastName>Vanheeg</lastName>
+            </name>
+            <identification>
+                <studentId>ervh00323</studentId>
+            </identification>
+        </identity>
+        <contact>
+            <addressList>
+                <address addressType="Physical">
+                    <street>
+                        <line1>1200 Triese Ave</line1>
+                    </street>
+                    <city>Spokane</city>
+                    <stateProvince>WA</stateProvince>
+                    <postalCode>6010</postalCode>
+                </address>
+            </addressList>
+            <phoneNumberList>
+                <phoneNumber phoneNumberType="Home">
+                    <phoneNumberIndicator>Yes</phoneNumberIndicator>
+                    <number>08 9657 8899</number>
+                </phoneNumber>
+            </phoneNumberList>
+        </contact>
+        <demographic>
+            <birthdate>2002-25-07</birthdate>
+            <sex>Male</sex>
+            <countryOfBirthCode>US</countryOfBirthCode>
+        </demographic>
+    </k12Student>
+</k12Students>

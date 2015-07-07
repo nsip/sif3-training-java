@@ -1,0 +1,364 @@
+<k12Students xmlns="http://www.sifassociation.org/datamodel/na/3.2">
+    <k12Student refId="7f21f3f5-ae96-408a-8924-cef811edaad4">
+        <identity>
+            <name>
+                <firstName>Joerg</firstName>
+                <lastName>Huber</lastName>
+            </name>
+            <identification>
+                <studentId>ez7b7j14</studentId>
+            </identification>
+        </identity>
+        <contact>
+            <addressList>
+                <address addressType="Physical">
+                    <street>
+                        <line1>27 Dunbar Rd</line1>
+                    </street>
+                    <city>Mt. Hawthorn</city>
+                    <stateProvince>WA</stateProvince>
+                    <postalCode>6000</postalCode>
+                </address>
+            </addressList>
+            <phoneNumberList>
+                <phoneNumber phoneNumberType="Home">
+                    <phoneNumberIndicator>Yes</phoneNumberIndicator>
+                    <number>0893345655</number>
+                </phoneNumber>
+            </phoneNumberList>
+        </contact>
+        <demographic>
+            <birthdate>1999-19-12</birthdate>
+            <sex>Male</sex>
+            <countryOfBirthCode>AU</countryOfBirthCode>
+        </demographic>
+    </k12Student>
+    <k12Student refId="15f46729-6fb8-4233-8ec6-3923c96786f8">
+        <identity>
+            <name>
+                <firstName>Peter</firstName>
+                <lastName>Haydon</lastName>
+            </name>
+            <identification>
+                <studentId>e7phj01</studentId>
+            </identification>
+        </identity>
+        <contact>
+            <addressList>
+                <address addressType="Physical">
+                    <street>
+                        <line1>11 Glengarry Rd</line1>
+                    </street>
+                    <city>Seattle</city>
+                    <stateProvince>WA</stateProvince>
+                    <postalCode>6001</postalCode>
+                </address>
+            </addressList>
+            <phoneNumberList>
+                <phoneNumber phoneNumberType="Home">
+                    <phoneNumberIndicator>Yes</phoneNumberIndicator>
+                    <number>0893345655</number>
+                </phoneNumber>
+            </phoneNumberList>
+        </contact>
+        <demographic>
+            <birthdate>2002-10-02</birthdate>
+            <sex>Male</sex>
+            <countryOfBirthCode>US</countryOfBirthCode>
+        </demographic>
+    </k12Student>
+    <k12Student refId="abbb4567-0E11-40ee-3aDD-fD1cBb6B1001">
+        <identity>
+            <name>
+                <firstName>Martina</firstName>
+                <lastName>Mills</lastName>
+            </name>
+            <identification>
+                <studentId>e0012mm1</studentId>
+            </identification>
+        </identity>
+        <contact>
+            <addressList>
+                <address addressType="Physical">
+                    <street>
+                        <line1>1a Whitly Close</line1>
+                    </street>
+                    <city>Portland</city>
+                    <stateProvince>OR</stateProvince>
+                    <postalCode>7000</postalCode>
+                </address>
+            </addressList>
+            <phoneNumberList>
+                <phoneNumber phoneNumberType="Home">
+                    <phoneNumberIndicator>Yes</phoneNumberIndicator>
+                    <number>09976566678</number>
+                </phoneNumber>
+            </phoneNumberList>
+        </contact>
+        <demographic>
+            <birthdate>2001-05-05</birthdate>
+            <sex>Female</sex>
+            <countryOfBirthCode>US</countryOfBirthCode>
+        </demographic>
+    </k12Student>
+    <k12Student refId="abcd47Fc-0ee6-4AAA-4123-fDab676B1003">
+        <identity>
+            <name>
+                <firstName>Rob</firstName>
+                <lastName>Vanheeg</lastName>
+            </name>
+            <identification>
+                <studentId>ervh00323</studentId>
+            </identification>
+        </identity>
+        <contact>
+            <addressList>
+                <address addressType="Physical">
+                    <street>
+                        <line1>1007 Bristol Ave</line1>
+                    </street>
+                    <city>Spokane</city>
+                    <stateProvince>WA</stateProvince>
+                    <postalCode>6010</postalCode>
+                </address>
+            </addressList>
+            <phoneNumberList>
+                <phoneNumber phoneNumberType="Home">
+                    <phoneNumberIndicator>Yes</phoneNumberIndicator>
+                    <number>08 9657 8899</number>
+                </phoneNumber>
+            </phoneNumberList>
+        </contact>
+        <demographic>
+            <birthdate>2002-25-07</birthdate>
+            <sex>Male</sex>
+            <countryOfBirthCode>US</countryOfBirthCode>
+        </demographic>
+    </k12Student>
+    <k12Student refId="a6e46af9-37f1-419f-81ce-2250edc576a3">
+        <identity>
+            <name>
+                <firstName>Cathrine</firstName>
+                <lastName>Roberts</lastName>
+            </name>
+            <identification>
+                <studentId>ez7b7cr1</studentId>
+            </identification>
+        </identity>
+        <contact>
+            <addressList>
+                <address addressType="Physical">
+                    <street>
+                        <line1>10 Alabama Cresent</line1>
+                    </street>
+                    <city>Spokane</city>
+                    <stateProvince>WA</stateProvince>
+                    <postalCode>6010</postalCode>
+                </address>
+            </addressList>
+            <phoneNumberList>
+                <phoneNumber phoneNumberType="Home">
+                    <phoneNumberIndicator>Yes</phoneNumberIndicator>
+                    <number>089456 7899</number>
+                </phoneNumber>
+            </phoneNumberList>
+        </contact>
+        <demographic>
+            <birthdate>2000-10-12</birthdate>
+            <sex>Female</sex>
+            <countryOfBirthCode>CA</countryOfBirthCode>
+        </demographic>
+    </k12Student>
+    <k12Student refId="ca495888-3e94-4b66-aa65-0cbfe41bbc02">
+        <identity>
+            <name>
+                <firstName>John</firstName>
+                <lastName>Pean</lastName>
+            </name>
+            <identification>
+                <studentId>ez7b7jp</studentId>
+            </identification>
+        </identity>
+        <contact>
+            <addressList>
+                <address addressType="Physical">
+                    <street>
+                        <line1>345 Collin St</line1>
+                    </street>
+                    <city>Salem</city>
+                    <stateProvince>OR</stateProvince>
+                    <postalCode>6013</postalCode>
+                </address>
+            </addressList>
+            <phoneNumberList>
+                <phoneNumber phoneNumberType="Home">
+                    <phoneNumberIndicator>Yes</phoneNumberIndicator>
+                    <number>08 9776 5643</number>
+                </phoneNumber>
+            </phoneNumberList>
+        </contact>
+        <demographic>
+            <birthdate>2001-11-03</birthdate>
+            <sex>Male</sex>
+            <countryOfBirthCode>US</countryOfBirthCode>
+        </demographic>
+    </k12Student>
+    <k12Student refId="63931364-6dbb-4105-ab15-b5d6d8c6ac81">
+        <identity>
+            <name>
+                <firstName>Nora</firstName>
+                <lastName>Carter</lastName>
+            </name>
+            <identification>
+                <studentId>e00nc01</studentId>
+            </identification>
+        </identity>
+        <contact>
+            <addressList>
+                <address addressType="Physical">
+                    <street>
+                        <line1>Roundhouse Lane</line1>
+                    </street>
+                    <city>Boise</city>
+                    <stateProvince>OR</stateProvince>
+                    <postalCode>6090</postalCode>
+                </address>
+            </addressList>
+            <phoneNumberList>
+                <phoneNumber phoneNumberType="Home">
+                    <phoneNumberIndicator>Yes</phoneNumberIndicator>
+                    <number>09 8765 2346</number>
+                </phoneNumber>
+            </phoneNumberList>
+        </contact>
+        <demographic>
+            <birthdate>2002-02-12</birthdate>
+            <sex>Female</sex>
+            <countryOfBirthCode>CA</countryOfBirthCode>
+        </demographic>
+    </k12Student>
+    <k12Student refId="b6b066b4-bd3c-414b-b063-e0ccc39c8d42">
+        <identity>
+            <name>
+                <firstName>Ernesto</firstName>
+                <lastName>Sanchez</lastName>
+            </name>
+            <identification>
+                <studentId>ez7b7es1</studentId>
+            </identification>
+        </identity>
+        <contact>
+            <addressList>
+                <address addressType="Physical">
+                    <street>
+                        <line1>7 Poynter Way</line1>
+                    </street>
+                    <city>Tacoma</city>
+                    <stateProvince>WA</stateProvince>
+                    <postalCode>7000</postalCode>
+                </address>
+            </addressList>
+            <phoneNumberList>
+                <phoneNumber phoneNumberType="Home">
+                    <phoneNumberIndicator>Yes</phoneNumberIndicator>
+                    <number>09 0086 5536</number>
+                </phoneNumber>
+            </phoneNumberList>
+        </contact>
+        <demographic>
+            <birthdate>2002-12-23</birthdate>
+            <sex>Male</sex>
+            <countryOfBirthCode>MX</countryOfBirthCode>
+        </demographic>
+    </k12Student>
+    <k12Student refId="e772c711-1139-45ce-a05f-ad87229dd4f1">
+        <identity>
+            <name>
+                <firstName>Phil</firstName>
+                <lastName>Moss</lastName>
+            </name>
+            <identification>
+                <studentId>e14b7pm2</studentId>
+            </identification>
+        </identity>
+        <contact>
+            <addressList>
+                <address addressType="Physical">
+                    <street>
+                        <line1>2 Hillview Close</line1>
+                    </street>
+                    <city>Yakima</city>
+                    <stateProvince>WA</stateProvince>
+                    <postalCode>7027</postalCode>
+                </address>
+            </addressList>
+        </contact>
+        <demographic>
+            <birthdate>2002-01-27</birthdate>
+            <sex>Male</sex>
+            <countryOfBirthCode>US</countryOfBirthCode>
+        </demographic>
+    </k12Student>
+    <k12Student refId="c9faddb1-98eb-4ff6-a22f-48a07928905c">
+        <identity>
+            <name>
+                <firstName>Monica</firstName>
+                <lastName>Lewis</lastName>
+            </name>
+            <identification>
+                <studentId>ez86ml9</studentId>
+            </identification>
+        </identity>
+        <contact>
+            <addressList>
+                <address addressType="Physical">
+                    <street>
+                        <line1>65 Newland Lane</line1>
+                    </street>
+                    <city>Centralia</city>
+                    <stateProvince>WA</stateProvince>
+                    <postalCode>6=7022</postalCode>
+                </address>
+            </addressList>
+            <phoneNumberList>
+                <phoneNumber phoneNumberType="Home">
+                    <phoneNumberIndicator>Yes</phoneNumberIndicator>
+                    <number>08 9866 7623</number>
+                </phoneNumber>
+            </phoneNumberList>
+        </contact>
+        <demographic>
+            <birthdate>1999-19-12</birthdate>
+            <sex>Female</sex>
+            <countryOfBirthCode>CA</countryOfBirthCode>
+        </demographic>
+    </k12Student>
+    <k12Student refId="a6634a5d-2e84-44ee-b858-a1229631a4b5">
+        <identity>
+            <name>
+                <firstName>Paul</firstName>
+                <lastName>Roos</lastName>
+            </name>
+            <identification>
+                <studentId>ez14b4pr</studentId>
+            </identification>
+        </identity>
+        <contact>
+            <addressList>
+                <address addressType="Physical">
+                    <street>
+                        <line1>27 Ecclestone</line1>
+                    </street>
+                    <city>Yakima</city>
+                    <stateProvince>WA</stateProvince>
+                    <postalCode>7027</postalCode>
+                </address>
+            </addressList>
+        </contact>
+        <demographic>
+            <birthdate>1999-19-12</birthdate>
+            <sex>Male</sex>
+            <countryOfBirthCode>AU</countryOfBirthCode>
+        </demographic>
+    </k12Student>
+</k12Students>

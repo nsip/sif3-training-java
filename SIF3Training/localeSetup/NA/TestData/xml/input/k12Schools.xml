@@ -1,0 +1,52 @@
+<k12Schools xmlns="http://www.sifassociation.org/datamodel/na/3.2">
+    <k12School refId="76C16b6b-e8e7-1bf5-CE12-5F7bD52688Bf">
+        <identification>
+            <schoolId>4001</schoolId>
+            <schoolIdSystem>School</schoolIdSystem>
+            <name>Potland Snr High</name>
+            <organizationType>K12School</organizationType>
+            <shortNameOfInstitution>PLD SH</shortNameOfInstitution>
+        </identification>
+        <addressList>
+            <address addressType="Physical">
+                <street>
+                    <line1>10 New School Rd</line1>
+                </street>
+                <city>Portland</city>
+                <stateProvince>OR</stateProvince>
+                <postalCode>6000</postalCode>
+            </address>
+        </addressList>
+        <phoneNumberList>
+            <phoneNumber phoneNumberType="Work">
+                <phoneNumberIndicator>Yes</phoneNumberIndicator>
+                <number>08 9000 9000</number>
+            </phoneNumber>
+        </phoneNumberList>
+    </k12School>
+    <k12School refId="abC16bd3-e8e7-4e23-CE12-2000aAbBb1000">
+        <identification>
+            <schoolId>5001</schoolId>
+            <schoolIdSystem>School</schoolIdSystem>
+            <name>Salem Snr High</name>
+            <organizationType>K12School</organizationType>
+            <shortNameOfInstitution>SLM SH</shortNameOfInstitution>
+        </identification>
+        <addressList>
+            <address addressType="Physical">
+                <street>
+                    <line1>1001 Nappa Ave</line1>
+                </street>
+                <city>Salem</city>
+                <stateProvince>OR</stateProvince>
+                <postalCode>6010</postalCode>
+            </address>
+        </addressList>
+        <phoneNumberList>
+            <phoneNumber phoneNumberType="Work">
+                <phoneNumberIndicator>Yes</phoneNumberIndicator>
+                <number>08 7000 7000</number>
+            </phoneNumber>
+        </phoneNumberList>
+    </k12School>
+</k12Schools>
