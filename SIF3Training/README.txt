@@ -17,13 +17,28 @@
 # Summary
 #########################################################################################################
 
-The SIF3 Training is a Java project designed for SIF3 Training courses.
+The SIF3 Training is a Java project designed for SIF3 Training courses. This includes training examples
+and exercises for the Australia (AU) and Northern America (NA). The default configuration is for AU. To
+configure the training material for NA the following steps need to be done:
 
+1) Set the property 'locale' in the ant.properties file to NA (i.e. locale=NA).
+2) Run the ant task called '99-prepare-training'.
+3) In most IDEs you need to 'refresh' the project for the changes of the ant target of step 2 to take 
+   effect.
+
+The training exercise descriptions can be found in the directory: localeSetup/<locale>/Exercises.
+There are more than one set of exercises depending on the training course duration.
 
 #########################################################################################################
 # Version History and Update
 #########################################################################################################
 
+=============================================================
+Version from July 07, 2015: Merged US and AU training Project
+=============================================================
+This version is upgraded to use the SIF3 Framework v0.7.0. Further it merges the US Training Github 
+project into this project to keep the two in-line with changes. Please refer to the summary section of 
+this README.txt for details on how to configure the training project for the Northern America (NA) locale.
 
 #########################################################################################################
 # Download Instructions
