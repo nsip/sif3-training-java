@@ -21,6 +21,13 @@ package sif3demo.consumer;
 import sif3.common.conversion.MarshalFactory;
 import sif3.common.conversion.ModelObjectInfo;
 import sif3.common.conversion.UnmarshalFactory;
+import sif3.common.model.PagingInfo;
+import sif3.common.model.QueryCriteria;
+import sif3.common.model.delayed.DelayedResponseReceipt;
+import sif3.common.ws.CreateOperationStatus;
+import sif3.common.ws.ErrorDetails;
+import sif3.common.ws.OperationStatus;
+import sif3.common.ws.model.MultiOperationStatusList;
 import sif3.infra.rest.consumer.AbstractConsumer;
 
 /**
@@ -83,4 +90,35 @@ public class StudentConsumer extends AbstractConsumer
     {
 	    // TODO Auto-generated method stub
     }
+    
+
+	/*-----------------------------------------------------------------------------*/
+	/*-- Methods required for DELAYED response processing. We do not use them as --*/
+	/*-- of this training, so we simply null them out.                           --*/ 
+	/*-----------------------------------------------------------------------------*/
+
+	@Override
+    public void processDelayedCreateMany(MultiOperationStatusList<CreateOperationStatus> arg0, DelayedResponseReceipt arg1)
+    {}
+
+	@Override
+    public void processDelayedDeleteMany(MultiOperationStatusList<OperationStatus> arg0, DelayedResponseReceipt arg1)
+    {}
+
+	@Override
+    public void processDelayedError(ErrorDetails arg0, DelayedResponseReceipt arg1)
+    {}
+
+	@Override
+    public void processDelayedQuery(Object arg0, PagingInfo arg1, DelayedResponseReceipt arg2)
+    {}
+
+	@Override
+    public void processDelayedServicePath(Object arg0, QueryCriteria arg1, PagingInfo arg2, DelayedResponseReceipt arg3)
+    {}
+
+	@Override
+    public void processDelayedUpdateMany(MultiOperationStatusList<OperationStatus> arg0, DelayedResponseReceipt arg1)
+    {}
+	
 }

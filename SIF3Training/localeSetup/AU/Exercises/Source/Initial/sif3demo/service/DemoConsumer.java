@@ -19,11 +19,8 @@ package sif3demo.service;
 import java.util.List;
 
 import sif.dd.au30.conversion.DataModelUnmarshalFactory;
-import sif.dd.au30.model.StudentCollectionType;
+import sif.dd.au30.model.StudentPersonalCollectionType;
 import sif3.common.header.HeaderValues.RequestType;
-import sif3.common.model.PagingInfo;
-import sif3.common.model.QueryCriteria;
-import sif3.common.model.ServicePathPredicate;
 import sif3.common.ws.Response;
 import sif3.infra.rest.consumer.ConsumerLoader;
 import sif3demo.consumer.StudentPersonalConsumer;
@@ -84,12 +81,12 @@ public class DemoConsumer
 	}
 	
   @SuppressWarnings("unused")
-  private StudentCollectionType loadStudents(DataModelUnmarshalFactory unmarshaller)
+  private StudentPersonalCollectionType loadStudents(DataModelUnmarshalFactory unmarshaller)
   {
     String inputEnvXML = FileReaderWriter.getFileContent(MULTI_STUDENT_FILE_NAME);
     try
     {
-      return (StudentCollectionType) unmarshaller.unmarshalFromXML(inputEnvXML, StudentCollectionType.class);
+      return (StudentPersonalCollectionType) unmarshaller.unmarshalFromXML(inputEnvXML, StudentPersonalCollectionType.class);
     }
     catch (Exception ex)
     {

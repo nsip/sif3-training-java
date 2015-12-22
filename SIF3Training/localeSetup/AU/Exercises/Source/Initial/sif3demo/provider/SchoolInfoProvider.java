@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import sif.dd.au30.model.ObjectFactory;
-import sif.dd.au30.model.SchoolCollectionType;
+import sif.dd.au30.model.SchoolInfoCollectionType;
 import sif.dd.au30.model.SchoolInfoType;
 import sif3.common.conversion.MarshalFactory;
 import sif3.common.conversion.ModelObjectInfo;
@@ -67,7 +67,7 @@ public class SchoolInfoProvider extends BaseProvider
 				try
 				{
 					String inputXML = FileReaderWriter.getFileContent(schoolFile);
-					SchoolCollectionType schoolList = (SchoolCollectionType) getUnmarshaller().unmarshalFromXML(inputXML, getMultiObjectClassInfo().getObjectType());
+					SchoolInfoCollectionType schoolList = (SchoolInfoCollectionType) getUnmarshaller().unmarshalFromXML(inputXML, getMultiObjectClassInfo().getObjectType());
 					if ((schoolList != null) && (schoolList.getSchoolInfo() != null))
 					{
 						schools = new HashMap<String, SchoolInfoType>();

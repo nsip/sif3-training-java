@@ -126,15 +126,15 @@ public class SchoolProvider extends BaseProvider
   @Override
   public ModelObjectInfo getSingleObjectClassInfo()
   {
-	return  ModelObjectInfo("k12School", K12SchoolType.class)
-//    return ModelObjectConstants.SCHOOL;
+//	return  ModelObjectInfo("k12School", K12SchoolType.class);
+    return ModelObjectConstants.SCHOOL;
   }
 
   @Override
   public ModelObjectInfo getMultiObjectClassInfo()
   {
-	  return new ModelObjectInfo("k12Schools", K12SchoolCollectionType.class);
-//    return ModelObjectConstants.SCHOOLS;
+//	  return new ModelObjectInfo("k12Schools", K12SchoolCollectionType.class);
+    return ModelObjectConstants.SCHOOLS;
   }
 
   @Override

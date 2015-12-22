@@ -29,7 +29,7 @@ import org.apache.log4j.Logger;
 import sif.dd.au30.conversion.DataModelMarshalFactory;
 import sif.dd.au30.conversion.DataModelUnmarshalFactory;
 import sif.dd.au30.model.ObjectFactory;
-import sif.dd.au30.model.SchoolCollectionType;
+import sif.dd.au30.model.SchoolInfoCollectionType;
 import sif.dd.au30.model.SchoolInfoType;
 import sif3.common.conversion.MarshalFactory;
 import sif3.common.conversion.ModelObjectInfo;
@@ -82,7 +82,7 @@ public class SchoolInfoProvider extends BaseProvider
 				try
 				{
 					String inputXML = FileReaderWriter.getFileContent(schoolFile);
-					SchoolCollectionType schoolList = (SchoolCollectionType) getUnmarshaller().unmarshalFromXML(inputXML, getMultiObjectClassInfo().getObjectType());
+					SchoolInfoCollectionType schoolList = (SchoolInfoCollectionType) getUnmarshaller().unmarshalFromXML(inputXML, getMultiObjectClassInfo().getObjectType());
 					if ((schoolList != null) && (schoolList.getSchoolInfo() != null))
 					{
 						schools = new HashMap<String, SchoolInfoType>();
@@ -201,7 +201,7 @@ public class SchoolInfoProvider extends BaseProvider
       }
     }
     
-    SchoolCollectionType schoolCollection = dmObjectFactory.createSchoolCollectionType();
+    SchoolInfoCollectionType schoolCollection = dmObjectFactory.createSchoolInfoCollectionType();
     schoolCollection.getSchoolInfo().addAll(schoolList);
     return schoolCollection;
   }
@@ -221,10 +221,10 @@ public class SchoolInfoProvider extends BaseProvider
   public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
   {
     // Must be of type SchoolCollectionType
-    if (data instanceof SchoolCollectionType)
+    if (data instanceof SchoolInfoCollectionType)
     {
       logger.debug("Create schools (Bulk Operation)");
-      SchoolCollectionType schools = (SchoolCollectionType)data;
+      SchoolInfoCollectionType schools = (SchoolInfoCollectionType)data;
       ArrayList<CreateOperationStatus> opStatus = new ArrayList<CreateOperationStatus>();
       int i=0;
       for (SchoolInfoType school : schools.getSchoolInfo())
@@ -266,10 +266,10 @@ public class SchoolInfoProvider extends BaseProvider
   public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
   {
     // Must be of type SchoolCollectionType
-    if (data instanceof SchoolCollectionType)
+    if (data instanceof SchoolInfoCollectionType)
     {
       logger.debug("Update schools (Bulk Operation)");
-      SchoolCollectionType schools = (SchoolCollectionType)data;
+      SchoolInfoCollectionType schools = (SchoolInfoCollectionType)data;
       ArrayList<OperationStatus> opStatus = new ArrayList<OperationStatus>();
       int i=0;
       for (SchoolInfoType school : schools.getSchoolInfo())

@@ -1,14 +1,14 @@
-<environment xmlns="http://www.sifassociation.org/infrastructure/3.0.1" type="DIRECT">
+<environment type="DIRECT">
     <sessionToken></sessionToken>
     <solutionId></solutionId>
     <defaultZone id="DemoZone">
-        <description>AU Demo Zone: Default Zone</description>
+        <description>NA Demo Zone: Default Zone</description>
     </defaultZone>
     <authenticationMethod>Basic</authenticationMethod>
     <consumerName></consumerName>
     <applicationInfo>
         <applicationKey></applicationKey>
-        <supportedInfrastructureVersion>3.0.1</supportedInfrastructureVersion>
+        <supportedInfrastructureVersion>3.1</supportedInfrastructureVersion>
         <dataModelNamespace>http://www.sifassociation.org/datamodel/na/3.2</dataModelNamespace>
         <transport>REST</transport>
         <applicationProduct>

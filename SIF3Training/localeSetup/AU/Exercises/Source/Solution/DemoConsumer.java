@@ -22,7 +22,7 @@ import java.util.List;
 import au.com.systemic.framework.utils.FileReaderWriter;
 
 import sif.dd.au30.conversion.DataModelUnmarshalFactory;
-import sif.dd.au30.model.StudentCollectionType;
+import sif.dd.au30.model.StudentPersonalCollectionType;
 import sif3.common.header.HeaderValues.RequestType;
 import sif3.common.model.PagingInfo;
 import sif3.common.model.QueryCriteria;
@@ -92,12 +92,12 @@ public class DemoConsumer
 	}
 
 	@SuppressWarnings("unused")
-	private StudentCollectionType loadStudents(DataModelUnmarshalFactory unmarshaller)
+	private StudentPersonalCollectionType loadStudents(DataModelUnmarshalFactory unmarshaller)
 	{
 		String inputEnvXML = FileReaderWriter.getFileContent(MULTI_STUDENT_FILE_NAME);
 		try
 		{
-			return (StudentCollectionType) unmarshaller.unmarshalFromXML(inputEnvXML, StudentCollectionType.class);
+			return (StudentPersonalCollectionType) unmarshaller.unmarshalFromXML(inputEnvXML, StudentPersonalCollectionType.class);
 		}
 		catch (Exception ex)
 		{
@@ -220,7 +220,7 @@ public class DemoConsumer
 
 		// Load a set of students from a file. Ensure that MULTI_STUDENT_FILE_NAME constant at the 
 		// top of this class points to the correct location where the StudentPersonals5.xml is located.
-	    StudentCollectionType students = loadStudents((DataModelUnmarshalFactory)consumer.getUnmarshaller());
+	    StudentPersonalCollectionType students = loadStudents((DataModelUnmarshalFactory)consumer.getUnmarshaller());
 	    try
 	    {
 	      List<BulkOperationResponse<OperationStatus>> responses = consumer.updateMany(students, null, REQUEST_TYPE);
