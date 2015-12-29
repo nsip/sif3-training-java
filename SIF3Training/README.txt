@@ -40,6 +40,12 @@ This version is upgraded to use the SIF3 Framework v0.7.0. Further it merges the
 project into this project to keep the two in-line with changes. Please refer to the summary section of 
 this README.txt for details on how to configure the training project for the Northern America (NA) locale.
 
+=============================================================
+Version from December 29, 2015: Changed Exercises for NA
+=============================================================
+This version changes the exercises for NA to use the SIF xPress 3.3 Data Model. It also added
+service path exercises.
+
 #########################################################################################################
 # Download Instructions
 #########################################################################################################
