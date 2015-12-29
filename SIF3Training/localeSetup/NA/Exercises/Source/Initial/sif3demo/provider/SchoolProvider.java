@@ -21,9 +21,9 @@ package sif3demo.provider;
 import java.util.HashMap;
 import java.util.List;
 
-import sif.dd.us32.model.ObjectFactory;
-import sif.dd.us32.model.K12SchoolCollectionType;
-import sif.dd.us32.model.K12SchoolType;
+import sif.dd.us33.model.ObjectFactory;
+import sif.dd.us33.model.XSchoolCollectionType;
+import sif.dd.us33.model.XSchoolType;
 import sif3.common.conversion.MarshalFactory;
 import sif3.common.conversion.ModelObjectInfo;
 import sif3.common.conversion.UnmarshalFactory;
@@ -44,155 +44,155 @@ import au.com.systemic.framework.utils.FileReaderWriter;
  */
 public class SchoolProvider extends BaseProvider
 {
-  private static HashMap<String, K12SchoolType> schools = null; // = new HashMap<String, K12SchoolType>();
+	private static HashMap<String, XSchoolType> schools = null; // = new HashMap<String, K12SchoolType>();
   
-  @SuppressWarnings("unused")
-  private ObjectFactory dmObjectFactory = new ObjectFactory();
+	@SuppressWarnings("unused")
+	private ObjectFactory dmObjectFactory = new ObjectFactory();
 
-  /*
-   * Will read a number of SchoolInfo Objects from a XML file. The location of the XML File is stored in the provider.properties file
-   * in the "provider.school.file.location" property.
-   */
-  public SchoolProvider()
-  {
-    super();
-	logger.debug("Constructor for SchoolProvider has been called.");
-	if (schools == null)
+	/*
+	 * Will read a number of SchoolInfo Objects from a XML file. The location of the XML File is stored in the provider.properties file
+	 * in the "provider.school.file.location" property.
+	 */
+	public SchoolProvider()
 	{
-		logger.debug("Constructor for SchoolProvider called for the first time. Try to load students from XML file...");
-	    // Load all school so that we can do some real stuff here.
-	    String schoolFile = getServiceProperties().getPropertyAsString("provider.school.file.location", null);
-	    if (schoolFile != null)
-	    {
-	      try
-	      {
-	        String inputXML = FileReaderWriter.getFileContent(schoolFile);
-	        K12SchoolCollectionType schoolList = (K12SchoolCollectionType)getUnmarshaller().unmarshalFromXML(inputXML, getMultiObjectClassInfo().getObjectType());
-	        if ((schoolList != null) && (schoolList.getK12School() != null))
-	        {
-				schools = new HashMap<String, K12SchoolType>();
-				for (K12SchoolType schoolInfo : schoolList.getK12School())
-				{
-					schools.put(schoolInfo.getRefId(), schoolInfo);
-				}
-				logger.debug("Loaded " + schools.size() + " schools into memory.");
-	        }
-	      }
-	      catch (Exception ex)
-	      {
-	        ex.printStackTrace();
-	        logger.debug("Loaded " + schools.size() + " schools into memory.");
-	      }
-	    }
-		// If schools are still null then something must have failed and would have been logged. For
-		// the purpose of making things work ok we initialise the students hashmap now. It will avoid null pointer errors.
+		super();
+		logger.debug("Constructor for SchoolProvider has been called.");
 		if (schools == null)
 		{
-			schools = new HashMap<String, K12SchoolType>();
+			logger.debug("Constructor for SchoolProvider called for the first time. Try to load students from XML file...");
+			// Load all school so that we can do some real stuff here.
+			String schoolFile = getServiceProperties().getPropertyAsString("provider.school.file.location", null);
+			if (schoolFile != null)
+			{
+				try
+				{
+					String inputXML = FileReaderWriter.getFileContent(schoolFile);
+					XSchoolCollectionType schoolList = (XSchoolCollectionType)getUnmarshaller().unmarshalFromXML(inputXML, getMultiObjectClassInfo().getObjectType());
+					if ((schoolList != null) && (schoolList.getXSchool() != null))
+					{
+						schools = new HashMap<String, XSchoolType>();
+						for (XSchoolType schoolInfo : schoolList.getXSchool())
+						{
+							schools.put(schoolInfo.getRefId(), schoolInfo);
+						}
+						logger.debug("Loaded " + schools.size() + " schools into memory.");
+					}
+				}
+				catch (Exception ex)
+				{
+					ex.printStackTrace();
+					logger.debug("Loaded " + schools.size() + " schools into memory.");
+				}
+			}
+			// If schools are still null then something must have failed and would have been logged. For
+			// the purpose of making things work ok we initialise the students hashmap now. It will avoid null pointer errors.
+			if (schools == null)
+			{
+				schools = new HashMap<String, XSchoolType>();
+			}
 		}
 	}
-  }
   
-  //----------------------------------
-  // Start Exercise 5
-  //----------------------------------
-  @Override
-  public MarshalFactory getMarshaller()
-  {
-    // TODO Auto-generated method stub
-    return null;
-  }
+	// ----------------------------------
+	// Start Exercise 5
+	// ----------------------------------
+	@Override
+	public MarshalFactory getMarshaller()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-  @Override
-  public UnmarshalFactory getUnmarshaller()
-  {
-    // TODO Auto-generated method stub
-    return null;
-  }
+	@Override
+	public UnmarshalFactory getUnmarshaller()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-  @Override
-  public ModelObjectInfo getSingleObjectClassInfo()
-  {
-    // TODO Auto-generated method stub
-    return null;
-  }
+	@Override
+	public ModelObjectInfo getSingleObjectClassInfo()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-  @Override
-  public ModelObjectInfo getMultiObjectClassInfo()
-  {
-    // TODO Auto-generated method stub
-    return null;
-  }
+	@Override
+	public ModelObjectInfo getMultiObjectClassInfo()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-  @Override
-  public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
-  {
-    // TODO Auto-generated method stub
-    return null;
-  }
+	@Override
+	public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-  @Override
-  public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException
-  {
-    // TODO Auto-generated method stub
-    return null;
-  }
-  //----------------------------------
-  // End of Exercise 5
-  //----------------------------------
+	@Override
+	public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	//----------------------------------
+	// End of Exercise 5
+	//----------------------------------
 
 
-  //--------------------------------------------------------------------
-  // Optional: Implement the following methods as part of Exercise 5...
-  //--------------------------------------------------------------------
-  @Override
-  public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
-  {
-    // TODO Auto-generated method stub
-    return null;
-  }
+	//--------------------------------------------------------------------
+	// Optional: Implement the following methods as part of Exercise 5...
+	//--------------------------------------------------------------------
+	@Override
+	public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-  @Override
-  public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
-  {
-    // TODO Auto-generated method stub
-    return null;
-  }
+	@Override
+	public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-  @Override
-  public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
-  {
-    // TODO Auto-generated method stub
-    return null;
-  }
+	@Override
+	public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-  @Override
-  public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
-  {
-    // TODO Auto-generated method stub
-    return null;
-  }
+	@Override
+	public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-  @Override
-  public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
-  {
-    // TODO Auto-generated method stub
-    return false;
-  }
+	@Override
+	public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
 
-  @Override
-  public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
-  {
-    // TODO Auto-generated method stub
-    return false;
-  }
-  //--------------------------------------------------------------------
-  // End Optional part of Exercise 5...
-  //--------------------------------------------------------------------
+	@Override
+	public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+	//--------------------------------------------------------------------
+	// End Optional part of Exercise 5...
+	//--------------------------------------------------------------------
 
-  @Override
-  public void shutdown()
-  {
-    // Leave as null for the moment...
-  }
+	@Override
+	public void shutdown()
+	{
+		// Leave as null for the moment...
+	}
 }

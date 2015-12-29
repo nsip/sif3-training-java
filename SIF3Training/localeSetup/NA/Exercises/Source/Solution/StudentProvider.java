@@ -38,6 +38,7 @@ import sif3.common.interfaces.QueryProvider;
 import sif3.common.interfaces.SIFEventIterator;
 import sif3.common.model.PagingInfo;
 import sif3.common.model.QueryCriteria;
+import sif3.common.model.QueryPredicate;
 import sif3.common.model.RequestMetadata;
 import sif3.common.model.SIFContext;
 import sif3.common.model.SIFEvent;
@@ -281,7 +282,7 @@ public class StudentProvider extends USDataModelProviderWithEvents<XStudentColle
     @Override
     public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
     {
-    	// Must be of type K12StudentCollectionType
+    	// Must be of type XStudentCollectionType
     	if (data instanceof XStudentCollectionType)
     	{
 			logger.debug("Create students (Bulk Operation) for "+getZoneAndContext(zone, context));
@@ -391,21 +392,44 @@ public class StudentProvider extends USDataModelProviderWithEvents<XStudentColle
 			logger.debug("Query Condition (given by service path): " + queryCriteria);
 		}
 		
-		//----------------------------------------------------------------------------------------------------------------------
-		// Start Exercise: Implement service path query
-		// Hint 1: First chech what service path is requested (get the name from queryCriteria parameter).
-		// Hint 2: Extract schoolRefId from queryCriteria parameter. Refer to section 5.7 in Developer's Guide.
-		// Hint 3: Use the fetchStudentsForSchool() method in this class to retrive students for a given school's refID. 
-		//----------------------------------------------------------------------------------------------------------------------
-		
-		
-		//----------------------------------------------------------------------------------------------------------------------
-		// At this point you should have a ArrayList<XStudentType>. Now we need to convert that into a proper SIF Collection
-		// Object (XStudentCollectionType). Check out how this is done in the retrieve() method of this class (further up).
-        //----------------------------------------------------------------------------------------------------------------------
-		
-		// Finally return the SIF Object (XStudentCollectionType) below.
-		return null;
+		// Check if the query is xSchools
+		List<QueryPredicate> predicates = queryCriteria.getPredicates();
+		if ((predicates != null) && (predicates.size() == 1)) // ensure it is a valid condition
+		{
+			if ("xSchools".equals(predicates.get(0).getSubject()))
+			{
+		    	logger.debug("Retrieve Students for School "+predicates.get(0).getValue()+" for "+getZoneAndContext(zone, context)+" and RequestMetadata = "+metadata);
+		    	
+		    	// Get the school's refID from the query condition. 
+		    	String schoolRefId = predicates.get(0).getValue();
+
+                // In the real implementation the line below would be a call to your DB or service layer to retrieve the 
+                // students for the given school.
+		    	ArrayList<XStudentType> studentList = fetchStudentsForSchool(schoolRefId, pagingInfo);
+		    	
+		    	// Create the SIF Object
+		    	XStudentCollectionType studentCollection = dmObjectFactory.createXStudentCollectionType();
+
+		    	// Put final students into SIF Object
+		    	if (studentList != null)
+		    	{
+		    		studentCollection.getXStudent().addAll(studentList);
+		    		return studentCollection;
+		    	}
+		    	else
+		    	{
+		    		return null;
+		    	}
+			}
+			else // all other service path query conditions are not supported by this implementation
+			{
+				throw new UnsupportedQueryException("The query condition (driven by the service path) "+queryCriteria+" is not supported by the provider.");
+			}
+		}
+		else // not supported query (only single level service path query supported by this provider)
+		{
+			throw new UnsupportedQueryException("The query condition (driven by the service path) "+queryCriteria+" is not supported by the provider.");
+		}
     }
 
 	@Override
@@ -500,4 +524,5 @@ public class StudentProvider extends USDataModelProviderWithEvents<XStudentColle
         // Check paging before returning above result
         return fetchStudents(studentMap, pagingInfo);
     }
+
 }

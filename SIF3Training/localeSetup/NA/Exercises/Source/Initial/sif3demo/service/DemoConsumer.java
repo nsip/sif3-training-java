@@ -19,8 +19,8 @@ package sif3demo.service;
 
 import java.util.List;
 
-import sif.dd.us32.conversion.DataModelUnmarshalFactory;
-import sif.dd.us32.model.K12StudentCollectionType;
+import sif.dd.us33.conversion.DataModelUnmarshalFactory;
+import sif.dd.us33.model.XStudentCollectionType;
 import sif3.common.ws.Response;
 import sif3.infra.rest.consumer.ConsumerLoader;
 import sif3demo.consumer.StudentConsumer;
@@ -32,10 +32,10 @@ import au.com.systemic.framework.utils.FileReaderWriter;
  */
 public class DemoConsumer
 {
-//	private final static String SINGLE_STUDENT_FILE_NAME = "C:/DEV/eclipseWorkspace/SIF3Training-US/TestData/xml/input/StudentPersonal.xml";
-//	private final static String MULTI_STUDENT_FILE_NAME = "C:/DEV/eclipseWorkspace/SIF3Training-US/TestData/xml/input/K12Students2.xml";
-//	private final static String SINGLE_STUDENT_FILE_NAME = "C:/Development/GitHubRepositories/SIF3Training-US/SIF3Training-US/TestData/xml/input/StudentPersonal.xml";
-	private final static String MULTI_STUDENT_FILE_NAME = "C:/Development/SIF3Training-US/TestData/xml/input/K12Students2.xml";
+//	private final static String SINGLE_STUDENT_FILE_NAME = "C:/DEV/lunaWorkspace/SIF3Training/TestData/xml/input/xStudent.xml";
+	private final static String MULTI_STUDENT_FILE_NAME = "C:/DEV/lunaWorkspace/SIF3Training/TestData/xml/input/xStudents2.xml";
+//	private final static String SINGLE_STUDENT_FILE_NAME = "C:/Development/GitHubRepositories/SIF3Training/SIF3Training/TestData/xml/input/xStudent.xml";
+//	private final static String MULTI_STUDENT_FILE_NAME = "C:/Development/GitHubRepositories/SIF3Training/SIF3Training/TestData/xml/input/xStudents2.xml";
 	private static final String CONSUMER_ID = "StudentConsumer";
 	
 //	private static final RequestType REQUEST_TYPE = RequestType.IMMEDIATE;
@@ -80,21 +80,20 @@ public class DemoConsumer
 		}
 	}
 	
-  @SuppressWarnings("unused")
-  private K12StudentCollectionType loadStudents(DataModelUnmarshalFactory unmarshaller)
-  {
-    String inputEnvXML = FileReaderWriter.getFileContent(MULTI_STUDENT_FILE_NAME);
-    try
-    {
-      return (K12StudentCollectionType) unmarshaller.unmarshalFromXML(inputEnvXML, K12StudentCollectionType.class);
-    }
-    catch (Exception ex)
-    {
-      ex.printStackTrace();
-      return null;
-    }
-  }
-
+	@SuppressWarnings("unused")
+	private XStudentCollectionType loadStudents(DataModelUnmarshalFactory unmarshaller)
+	{
+		String inputEnvXML = FileReaderWriter.getFileContent(MULTI_STUDENT_FILE_NAME);
+		try
+		{
+			return (XStudentCollectionType) unmarshaller.unmarshalFromXML(inputEnvXML, XStudentCollectionType.class);
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+			return null;
+		}
+	}
 	
 	private StudentConsumer getConsumer()
 	{
@@ -102,9 +101,9 @@ public class DemoConsumer
 	}
 
 	
-	/* -----------------------
-	 * Section for Exercise 2
-	 ------------------------*/
+	/*----------------------------*/
+    /*-- Section for Exercise 2 --*/
+	/*----------------------------*/
 	private void getStudents(StudentConsumer consumer)
 	{
 		System.out.println("Start 'Get List of Students' ...");
@@ -128,34 +127,72 @@ public class DemoConsumer
 		
 		System.out.println("Finished 'Get Single Student'.");
 	}
-  /* -----------------------------
-   * End of Section for Exercise 2
-   -------------------------------*/
+	/*-----------------------------------*/
+  	/*-- End of Section for Exercise 2 --*/
+	/*-----------------------------------*/
 	
 
-  /* -----------------------
-   * Section for Exercise 4
-   ------------------------*/
-  private void deleteStudents(StudentConsumer consumer)
-  {
-    System.out.println("Start 'Delete List of Students' ...");
+	/*----------------------------*/
+    /*-- Section for Exercise 4 --*/
+	/*----------------------------*/
+	private void deleteStudents(StudentConsumer consumer)
+	{
+		System.out.println("Start 'Delete List of Students' ...");
 
-    //TODO: Exercise 4: Call to delete a list of students => consumer.deleteMany(...)
-    
-    System.out.println("Finished 'Delete List of Students'.");
-  }
+		// TODO: Exercise 4: Call to delete a list of students =>
+		// consumer.deleteMany(...)
 
-  private void updateStudent(StudentConsumer consumer)
-  {
-    System.out.println("Start 'Update List of Students'...");
+		System.out.println("Finished 'Delete List of Students'.");
+	}
 
-    //TODO: Exercise 4: Call to update a list of student => consumer.updateMany(...)
-    
-    System.out.println("Finished 'Update List of Students'.");
-  }
-  /* -----------------------------
-   * End of Section for Exercise 4
-   -------------------------------*/
+	private void updateStudent(StudentConsumer consumer)
+	{
+		System.out.println("Start 'Update List of Students'...");
+
+		// TODO: Exercise 4: Call to update a list of student =>
+		// consumer.updateMany(...)
+
+		System.out.println("Finished 'Update List of Students'.");
+	}
+
+	/*-----------------------------------*/
+  	/*-- End of Section for Exercise 4 --*/
+	/*-----------------------------------*/
+
+  
+	/*----------------------------------------*/
+	/*-- Section for Exercise: Service Path --*/
+	/*----------------------------------------*/
+
+  	/*
+	 * Possible Solution for Exercise: Service Path
+	 */	
+	private void getStudentsByServicePath(String parent, String value, StudentConsumer consumer)
+	{
+	    System.out.println("Start 'Get Students By Service Path '...");
+	    
+	    //TODO: Service Path Exercise:
+	    
+	    //Step 1: Create a QueryCriteria and add a 'Predicate' (where clause) below
+		
+		try
+		{
+			//Step 2: Call consumer.retrieveByServicePath() with the QueryCriteria and other parameters.
+		    //        Refer to Javadoc for details of the parameters to use.
+		
+			//Step 3: Print out the result - comment out the line below....
+			//printResponses(responses, consumer);
+		}
+		catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		System.out.println("Finished 'Get Students By Service Path'.");
+	}
+	
+	/*-----------------------------------------------*/
+	/*-- End of Section for Exercise: Service Path --*/
+	/*-----------------------------------------------*/
 
 	
 	public static void main(String[] args)
@@ -174,6 +211,9 @@ public class DemoConsumer
 			// Use for Exercise 4 - uncomment the 2 lines below
 			//demo.deleteStudents(consumer);
 			//demo.updateStudent(consumer);
+			
+			// Use for Exercise: Service Path - uncomment the line below
+			//demo.getStudentsByServicePath("xSchools", "2351B3F4-C788-4500-177B-23E0D87AEC97", consumer);
 		}
 
 		ConsumerLoader.shutdown();

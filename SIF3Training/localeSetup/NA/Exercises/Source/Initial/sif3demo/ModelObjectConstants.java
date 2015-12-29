@@ -18,10 +18,10 @@
 
 package sif3demo;
 
-import sif.dd.us32.model.K12SchoolCollectionType;
-import sif.dd.us32.model.K12SchoolType;
-import sif.dd.us32.model.K12StudentCollectionType;
-import sif.dd.us32.model.K12StudentType;
+import sif.dd.us33.model.XSchoolCollectionType;
+import sif.dd.us33.model.XSchoolType;
+import sif.dd.us33.model.XStudentCollectionType;
+import sif.dd.us33.model.XStudentType;
 import sif3.common.conversion.ModelObjectInfo;
 
 /**
@@ -30,8 +30,8 @@ import sif3.common.conversion.ModelObjectInfo;
  */
 public class ModelObjectConstants
 {
-	public static final ModelObjectInfo STUDENTS         = new ModelObjectInfo("k12Students", K12StudentCollectionType.class);
-	public static final ModelObjectInfo STUDENT          = new ModelObjectInfo("k12Student", K12StudentType.class);
-	public static final ModelObjectInfo SCHOOLS          = new ModelObjectInfo("k12Schools", K12SchoolCollectionType.class);
-	public static final ModelObjectInfo SCHOOL           = new ModelObjectInfo("k12School", K12SchoolType.class);
+	public static final ModelObjectInfo STUDENTS         = new ModelObjectInfo("xStudents", XStudentCollectionType.class);
+	public static final ModelObjectInfo STUDENT          = new ModelObjectInfo("xStudent", XStudentType.class);
+	public static final ModelObjectInfo SCHOOLS          = new ModelObjectInfo("xSchools", XSchoolCollectionType.class);
+	public static final ModelObjectInfo SCHOOL           = new ModelObjectInfo("xSchool", XSchoolType.class);
 }

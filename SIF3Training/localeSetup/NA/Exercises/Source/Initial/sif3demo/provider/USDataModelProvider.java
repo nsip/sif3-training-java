@@ -20,8 +20,8 @@ package sif3demo.provider;
 
 import org.apache.log4j.Logger;
 
-import sif.dd.us32.conversion.DataModelMarshalFactory;
-import sif.dd.us32.conversion.DataModelUnmarshalFactory;
+import sif.dd.us33.conversion.DataModelMarshalFactory;
+import sif.dd.us33.conversion.DataModelUnmarshalFactory;
 import sif3.common.conversion.MarshalFactory;
 import sif3.common.conversion.UnmarshalFactory;
 import sif3.common.utils.JAXBUtils;

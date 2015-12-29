@@ -9,7 +9,7 @@
     <applicationInfo>
         <applicationKey></applicationKey>
         <supportedInfrastructureVersion>3.1</supportedInfrastructureVersion>
-        <dataModelNamespace>http://www.sifassociation.org/datamodel/na/3.2</dataModelNamespace>
+        <dataModelNamespace>http://www.sifassociation.org/datamodel/na/3.3</dataModelNamespace>
         <transport>REST</transport>
         <applicationProduct>
             <vendorName>Systemic Pty Ltd</vendorName>
@@ -28,7 +28,7 @@
     <provisionedZones>
        <provisionedZone id="DemoZone">
             <services>
-                <service name="k12Students" contextId="DEFAULT">
+                <service name="xStudents" contextId="DEFAULT">
                   <rights>
                     <right type="QUERY">APPROVED</right>
                     <right type="CREATE">APPROVED</right>
@@ -39,7 +39,7 @@
                     <right type="ADMIN">REJECTED</right>
                   </rights>
                 </service>
-                <service name="k12Schools" contextId="DEFAULT" type="OBJECT">
+                <service name="xSchools" contextId="DEFAULT" type="OBJECT">
                   <rights>
                     <right type="QUERY">APPROVED</right>
                     <right type="CREATE">APPROVED</right>
@@ -48,6 +48,12 @@
                     <right type="PROVIDE">REJECTED</right>
                     <right type="SUBSCRIBE">SUPPORTED</right>
                     <right type="ADMIN">REJECTED</right>
+                  </rights>
+                </service>
+                <!-- All students at a school -->  
+                <service name="xSchools/{}/xStudents" contextId="DEFAULT" type="SERVICEPATH">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
                   </rights>
                 </service>
             </services>            

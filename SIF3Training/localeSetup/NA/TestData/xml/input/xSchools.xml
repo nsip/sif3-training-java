@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xSchools xmlns="http://www.sifassociation.org/datamodel/na/3.3">
+   <xSchool refId="D9E05CA9-C9D1-4C5E-2719-0B7837F9C20E">
+      <leaRefId>BA91C9D9-3393-2534-262C-ED3B8F7BA064</leaRefId>
+      <localId>718822</localId>
+      <stateProvinceId>713842</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>58783</id>
+         </otherId>
+      </otherIds>
+      <schoolName>Regents HS</schoolName>
+      <yearGroups>
+         <yearGroup>03</yearGroup>
+         <yearGroup>04</yearGroup>
+         <yearGroup>02</yearGroup>
+         <yearGroup>06</yearGroup>
+         <yearGroup>05</yearGroup>
+         <yearGroup>01</yearGroup>
+         <yearGroup>5</yearGroup>
+         <yearGroup>K</yearGroup>
+      </yearGroups>
+      <address>
+         <line1>2 School Ave.</line1>
+         <city>Schenectady</city>
+         <stateProvince>NY</stateProvince>
+         <postalCode>12304</postalCode>
+      </address>
+      <phoneNumber>
+         <phoneNumberType>Office</phoneNumberType>
+         <number>555-555-5555</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Office</phoneNumberType>
+            <number>555-555-5556</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+         <phoneNumber>
+            <phoneNumberType>Office</phoneNumberType>
+            <number>555-555-5557</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+   <xSchool refId="2351B3F4-C788-4500-177B-23E0D87AEC97">
+      <leaRefId>BA91C9D9-3393-2534-262C-ED3B8F7BA064</leaRefId>
+      <localId>856766</localId>
+      <stateProvinceId>751154</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>21745</id>
+         </otherId>
+      </otherIds>
+      <schoolName>Hudson North HS</schoolName>
+      <address>
+         <line1>1072 Eighteenth Crossing</line1>
+         <city>HAWTHORNE</city>
+         <stateProvince>NY</stateProvince>
+         <postalCode>10567</postalCode>
+      </address>
+      <phoneNumber>
+         <phoneNumberType>Main</phoneNumberType>
+         <number>5552658746</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Other</phoneNumberType>
+            <number>5556741880</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+   <xSchool refId="86BB5361-7681-46BB-9C83-2D515B8EB880">
+      <leaRefId>BA91C9D9-3393-2534-262C-ED3B8F7BA064</leaRefId>
+      <localId>237366</localId>
+      <stateProvinceId>843425</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>74376</id>
+         </otherId>
+      </otherIds>
+      <schoolName>Windsor MS</schoolName>
+      <address>
+         <line1>1145 Twentieth Place</line1>
+         <city>HARTSDALE</city>
+         <stateProvince>NY</stateProvince>
+         <postalCode>10567</postalCode>
+      </address>
+      <phoneNumber>
+         <phoneNumberType>Main</phoneNumberType>
+         <number>5555205280</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Other</phoneNumberType>
+            <number>5558306128</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+   <xSchool refId="77751435-025B-6C5B-1A07-306B535061BD">
+      <leaRefId>BA91C9D9-3393-2534-262C-ED3B8F7BA064</leaRefId>
+      <localId>178821</localId>
+      <stateProvinceId>863765</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>68657</id>
+         </otherId>
+      </otherIds>
+      <schoolName>Northmoor HS</schoolName>
+      <address>
+         <line1>2099 First Circle</line1>
+         <city>BRONXVILLE</city>
+         <stateProvince>NY</stateProvince>
+         <postalCode>10510</postalCode>
+      </address>
+      <phoneNumber>
+         <phoneNumberType>Main</phoneNumberType>
+         <number>5553162306</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Other</phoneNumberType>
+            <number>5558100453</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+   <xSchool refId="C9A3E3A0-E16C-4537-7703-3C9B1F955EC8">
+      <leaRefId>BA91C9D9-3393-2534-262C-ED3B8F7BA064</leaRefId>
+      <localId>531138</localId>
+      <stateProvinceId>862865</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>53453</id>
+         </otherId>
+      </otherIds>
+      <schoolName>Superior West HS</schoolName>
+      <address>
+         <line1>5075 Thirteenth Drive</line1>
+         <city>CROTON ON HUDSON</city>
+         <stateProvince>NY</stateProvince>
+         <postalCode>10567</postalCode>
+      </address>
+      <phoneNumber>
+         <phoneNumberType>Main</phoneNumberType>
+         <number>5554380248</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Other</phoneNumberType>
+            <number>5556746243</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+   <xSchool refId="2EE67B76-49FB-A2A8-BC42-4947F68BAFDC">
+      <leaRefId>BA91C9D9-3393-2534-262C-ED3B8F7BA064</leaRefId>
+      <localId>232246</localId>
+      <stateProvinceId>416585</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>83573</id>
+         </otherId>
+      </otherIds>
+      <schoolName>Washington HS</schoolName>
+      <address>
+         <line1>121 Seventh Boulevard</line1>
+         <city>JEFFERSON VALLEY</city>
+         <stateProvince>NY</stateProvince>
+         <postalCode>10567</postalCode>
+      </address>
+      <phoneNumber>
+         <phoneNumberType>Main</phoneNumberType>
+         <number>5553864865</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Other</phoneNumberType>
+            <number>5553050362</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+   <xSchool refId="D99DF539-7D00-4AE9-A752-4E08A3394877">
+      <leaRefId>9BA8379D-9A9D-4D59-9202-E976CADF5526</leaRefId>
+      <localId>177656</localId>
+      <stateProvinceId>182637</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>41438</id>
+         </otherId>
+      </otherIds>
+      <schoolName>Binghamton Central HS</schoolName>
+      <address>
+         <line1>1113 South Tenth</line1>
+         <city>BINGHAMTON</city>
+         <stateProvince>NY</stateProvince>
+         <postalCode>13901</postalCode>
+      </address>
+      <phoneNumber>
+         <phoneNumberType>Main</phoneNumberType>
+         <number>5550887155</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Other</phoneNumberType>
+            <number>5558086883</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+   <xSchool refId="C028223C-63AE-C05E-A79B-534AC70BE91F">
+      <leaRefId>BA91C9D9-3393-2534-262C-ED3B8F7BA064</leaRefId>
+      <localId>466186</localId>
+      <stateProvinceId>282267</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>38176</id>
+         </otherId>
+      </otherIds>
+      <schoolName>Southmoor HS</schoolName>
+      <address>
+         <line1>7999 Fourteenth Crossing</line1>
+         <city>THORNWOOD</city>
+         <stateProvince>NY</stateProvince>
+         <postalCode>10594</postalCode>
+      </address>
+      <phoneNumber>
+         <phoneNumberType>Main</phoneNumberType>
+         <number>5555044247</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Other</phoneNumberType>
+            <number>5558377313</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+   <xSchool refId="66667705-6C51-4C30-A22A-77CEA0FBCF53">
+      <leaRefId>9BA8379D-9A9D-4D59-9202-E976CADF5526</leaRefId>
+      <localId>542334</localId>
+      <stateProvinceId>566725</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>34423</id>
+         </otherId>
+      </otherIds>
+      <schoolName>Johnson City MS</schoolName>
+      <yearGroups>
+         <yearGroup>12</yearGroup>
+      </yearGroups>
+      <address>
+         <line1>12 Tree Lane</line1>
+         <city>Johnson City</city>
+         <stateProvince>NY</stateProvince>
+         <postalCode>13790</postalCode>
+      </address>
+      <phoneNumber>
+         <phoneNumberType>Main</phoneNumberType>
+         <number>5552168230</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Other</phoneNumberType>
+            <number>5550648358</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+   <xSchool refId="D630A8F8-8B1C-EC94-7BB7-7B0A8213994B">
+      <leaRefId>BA91C9D9-3393-2534-262C-ED3B8F7BA064</leaRefId>
+      <localId>466638</localId>
+      <stateProvinceId>862427</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>28825</id>
+         </otherId>
+      </otherIds>
+      <schoolName>New Line Prep</schoolName>
+      <address>
+         <line1>3088 Polk Road</line1>
+         <city>HASTINGS ON HUDSON</city>
+         <stateProvince>NY</stateProvince>
+         <postalCode>10567</postalCode>
+      </address>
+      <phoneNumber>
+         <phoneNumberType>Main</phoneNumberType>
+         <number>5558624748</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Other</phoneNumberType>
+            <number>5553340048</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+   <xSchool refId="B8852FA3-C90F-4AAB-AD4F-9940E3CC3E27">
+      <leaRefId>9BA8379D-9A9D-4D59-9202-E976CADF5526</leaRefId>
+      <localId>841552</localId>
+      <stateProvinceId>627776</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>13835</id>
+         </otherId>
+      </otherIds>
+      <schoolName>Arbor Grove Elementary</schoolName>
+      <address>
+         <line1>102 West Main</line1>
+         <city>Windsor</city>
+         <stateProvince>NY</stateProvince>
+         <postalCode>13865</postalCode>
+      </address>
+      <phoneNumber>
+         <phoneNumberType>Main</phoneNumberType>
+         <number>5554025334</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Other</phoneNumberType>
+            <number>5555768704</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+   <xSchool refId="31DAE9ED-1169-46EE-AFAE-A06B1D91625A">
+      <leaRefId>BA91C9D9-3393-2534-262C-ED3B8F7BA064</leaRefId>
+      <localId>245243</localId>
+      <stateProvinceId>453448</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>54176</id>
+         </otherId>
+      </otherIds>
+      <schoolName>Hudson South HS</schoolName>
+      <address>
+         <line1>1090 Eighteenth Crossing</line1>
+         <city>IRVINGTON</city>
+         <stateProvince>NY</stateProvince>
+         <postalCode>10567</postalCode>
+      </address>
+      <phoneNumber>
+         <phoneNumberType>Main</phoneNumberType>
+         <number>5554245140</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Other</phoneNumberType>
+            <number>5550254150</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+   <xSchool refId="72C7A2B1-75F1-0BF4-4A8B-A32B3F4BBD82">
+      <leaRefId>BA91C9D9-3393-2534-262C-ED3B8F7BA064</leaRefId>
+      <localId>784513</localId>
+      <stateProvinceId>454676</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>53672</id>
+         </otherId>
+      </otherIds>
+      <schoolName>Superior East HS</schoolName>
+      <address>
+         <line1>3018 Sixth Street</line1>
+         <city>SHENOROCK</city>
+         <stateProvince>NY</stateProvince>
+         <postalCode>10587</postalCode>
+      </address>
+      <phoneNumber>
+         <phoneNumberType>Main</phoneNumberType>
+         <number>5557472880</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Other</phoneNumberType>
+            <number>5556083735</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+   <xSchool refId="414F1341-9B5B-42C9-E784-B49AF4B6B9E7">
+      <leaRefId>BA91C9D9-3393-2534-262C-ED3B8F7BA064</leaRefId>
+      <localId>512534</localId>
+      <stateProvinceId>215318</stateProvinceId>
+      <otherIds>
+         <otherId>
+            <type>NCES</type>
+            <id>31627</id>
+         </otherId>
+      </otherIds>
+      <schoolName>Catskill Commons HS</schoolName>
+      <phoneNumber>
+         <phoneNumberType>Main</phoneNumberType>
+         <number>5551312857</number>
+         <primaryIndicator>true</primaryIndicator>
+      </phoneNumber>
+      <otherPhoneNumbers>
+         <phoneNumber>
+            <phoneNumberType>Other</phoneNumberType>
+            <number>5552537368</number>
+            <primaryIndicator>false</primaryIndicator>
+         </phoneNumber>
+      </otherPhoneNumbers>
+   </xSchool>
+</xSchools>

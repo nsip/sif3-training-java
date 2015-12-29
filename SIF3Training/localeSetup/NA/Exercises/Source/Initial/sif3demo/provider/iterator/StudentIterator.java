@@ -22,8 +22,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import sif.dd.us32.model.K12StudentCollectionType;
-import sif.dd.us32.model.K12StudentType;
+import sif.dd.us33.model.XStudentCollectionType;
+import sif.dd.us33.model.XStudentType;
 import sif3.common.header.HeaderValues.EventAction;
 import sif3.common.header.HeaderValues.UpdateType;
 import sif3.common.interfaces.SIFEventIterator;
@@ -34,21 +34,21 @@ import au.com.systemic.framework.utils.AdvancedProperties;
  * @author Joerg Huber
  *
  */
-public class StudentIterator implements SIFEventIterator<K12StudentCollectionType>
+public class StudentIterator implements SIFEventIterator<XStudentCollectionType>
 {
 	private int currentPos = 0;
 	private int currentCycle = 1;
 	private int numRecycle = 1;
 	
-	private List<K12StudentType> studentEvents =  new ArrayList<K12StudentType>();
+	private List<XStudentType> studentEvents =  new ArrayList<XStudentType>();
 	
-	public StudentIterator(String providerID, AdvancedProperties serviceProperties, HashMap<String, K12StudentType> students)
+	public StudentIterator(@SuppressWarnings("unused") String providerID, AdvancedProperties serviceProperties, HashMap<String, XStudentType> students)
 	{
 		currentPos = 0;
 		if (students != null)
 		{
-			studentEvents = new ArrayList<K12StudentType>(students.values());
-//			for (K12StudentType student : K12StudentType)
+			studentEvents = new ArrayList<XStudentType>(students.values());
+//			for (XStudentType student : students.values())
 //			{
 //				student.setRefId(UUIDGenerator.getUUID());
 //			}
@@ -61,15 +61,15 @@ public class StudentIterator implements SIFEventIterator<K12StudentCollectionTyp
      * @see sif3.common.interfaces.SIFEventIterator#getNextEvents(int)
      */
     @Override
-    public SIFEvent<K12StudentCollectionType> getNextEvents(int maxListSize)
+    public SIFEvent<XStudentCollectionType> getNextEvents(int maxListSize)
     {
-		SIFEvent<K12StudentCollectionType> events = null;
+		SIFEvent<XStudentCollectionType> events = null;
 		if (hasNext())
 		{
-			events = new SIFEvent<K12StudentCollectionType>(new K12StudentCollectionType(), EventAction.UPDATE, UpdateType.FULL, 0);
+			events = new SIFEvent<XStudentCollectionType>(new XStudentCollectionType(), EventAction.UPDATE, UpdateType.FULL, 0);
 			while ((events.getListSize() < maxListSize) && hasNext())
 			{
-				events.getSIFObjectList().getK12Student().add(studentEvents.get(currentPos));
+				events.getSIFObjectList().getXStudent().add(studentEvents.get(currentPos));
 				events.setListSize(events.getListSize()+1);
 				currentPos++;
 				if (currentPos == studentEvents.size())
