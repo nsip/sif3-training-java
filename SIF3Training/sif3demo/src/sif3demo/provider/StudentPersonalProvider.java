@@ -80,7 +80,7 @@ public class StudentPersonalProvider extends AUDataModelProviderWithEvents<Stude
 			String studentFile = getServiceProperties().getPropertyAsString("provider.student.file.location", null);
 			if (studentFile != null)
 			{
-				String inputXML = FileReaderWriter.getFileContent(studentFile);
+				String inputXML = FileReaderWriter.getFileContent(studentFile, ModelObjectConstants.UTF_8);
 				try
 				{
 					StudentPersonalCollectionType studentList = (StudentPersonalCollectionType) getUnmarshaller().unmarshalFromXML(inputXML, getMultiObjectClassInfo().getObjectType());
@@ -113,7 +113,7 @@ public class StudentPersonalProvider extends AUDataModelProviderWithEvents<Stude
 			String fileName = getServiceProperties().getPropertyAsString("provider.teachinggroup.file.location", null);
 			if (fileName != null)
 			{
-				String inputXML = FileReaderWriter.getFileContent(fileName);
+				String inputXML = FileReaderWriter.getFileContent(fileName, ModelObjectConstants.UTF_8);
 				try
 				{
 					TeachingGroupCollectionType classes = (TeachingGroupCollectionType) getUnmarshaller().unmarshalFromXML(inputXML, ModelObjectConstants.TEACHING_GROUPS.getObjectType());

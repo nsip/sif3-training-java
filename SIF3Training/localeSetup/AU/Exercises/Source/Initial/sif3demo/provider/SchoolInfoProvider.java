@@ -38,7 +38,7 @@ import sif3.common.model.SIFZone;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.infra.rest.provider.BaseProvider;
-import systemic.sif3.demo.rest.ModelObjectConstants;
+import sif3demo.ModelObjectConstants;
 import au.com.systemic.framework.utils.FileReaderWriter;
 
 /**
