@@ -38,6 +38,7 @@ import sif3.common.model.SIFZone;
 import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.infra.rest.provider.BaseProvider;
+import systemic.sif3.demo.rest.ModelObjectConstants;
 import au.com.systemic.framework.utils.FileReaderWriter;
 
 /**
@@ -68,7 +69,7 @@ public class SchoolInfoProvider extends BaseProvider
 			{
 				try
 				{
-					String inputXML = FileReaderWriter.getFileContent(schoolFile);
+					String inputXML = FileReaderWriter.getFileContent(schoolFile, ModelObjectConstants.UTF_8);
 					SchoolInfoCollectionType schoolList = (SchoolInfoCollectionType) getUnmarshaller().unmarshalFromXML(inputXML, getMultiObjectClassInfo().getObjectType());
 					if ((schoolList != null) && (schoolList.getSchoolInfo() != null))
 					{

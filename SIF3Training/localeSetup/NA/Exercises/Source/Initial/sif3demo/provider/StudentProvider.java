@@ -72,7 +72,7 @@ public class StudentProvider extends USDataModelProviderWithEvents<XStudentColle
 			String studentFile = getServiceProperties().getPropertyAsString("provider.student.file.location", null);
 			if (studentFile != null)
 			{
-				String inputXML = FileReaderWriter.getFileContent(studentFile);
+				String inputXML = FileReaderWriter.getFileContent(studentFile, ModelObjectConstants.UTF_8);
 				try
 				{
 				    XStudentCollectionType studentList = (XStudentCollectionType) getUnmarshaller().unmarshalFromXML(inputXML, getMultiObjectClassInfo().getObjectType());

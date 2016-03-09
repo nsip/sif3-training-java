@@ -83,7 +83,7 @@ public class SchoolProvider extends BaseProvider
 		    {
 		      try
 		      {
-		        String inputXML = FileReaderWriter.getFileContent(schoolFile);
+		        String inputXML = FileReaderWriter.getFileContent(schoolFile, ModelObjectConstants.UTF_8);
 		        XSchoolCollectionType schoolList = (XSchoolCollectionType)getUnmarshaller().unmarshalFromXML(inputXML, getMultiObjectClassInfo().getObjectType());
 		        if ((schoolList != null) && (schoolList.getXSchool() != null))
 		        {
