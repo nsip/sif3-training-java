@@ -34,7 +34,9 @@ import sif3.common.conversion.ModelObjectInfo;
  */
 public class ModelObjectConstants
 {
-	public static final ModelObjectInfo STUDENT_PERSONALS         = new ModelObjectInfo("StudentPersonals", StudentPersonalCollectionType.class);
+    public static final String UTF_8 = "UTF-8";
+
+    public static final ModelObjectInfo STUDENT_PERSONALS         = new ModelObjectInfo("StudentPersonals", StudentPersonalCollectionType.class);
 	public static final ModelObjectInfo STUDENT_PERSONAL          = new ModelObjectInfo("StudentPersonal", StudentPersonalType.class);
 	public static final ModelObjectInfo SCHOOL_INFOS              = new ModelObjectInfo("SchoolInfos", SchoolInfoCollectionType.class);
 	public static final ModelObjectInfo SCHOOL_INFO               = new ModelObjectInfo("SchoolInfo", SchoolInfoType.class);
