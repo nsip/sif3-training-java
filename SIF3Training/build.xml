@@ -34,6 +34,8 @@
 
 	<!-- print some varaibles -->
 	<target name="00-env" description="Show Ant variables">
+		<echo message="Java/JVM version: ${ant.java.version}"/> 
+		<echo message="Java/JVM detail version: ${java.version}"/> 
 		<echo message="Locale: ${locale}"/>
 		<echo message="project.basedir: ${project.basedir}"/>
 		<echo message="locale.base.dir: ${locale.base.dir}"/>
@@ -106,9 +108,10 @@
 
 	<!-- Main Compile Target -->
 	<target name="compile-all" depends="init" description="Compile all sources">
-
-		<!-- Must have sif3Common first -->
 		<echo message="Compile: sif3demo Classes"/>
+		<echo message="Ant uses Java/JVM version: ${ant.java.version}"/> 
+		<echo message="Detailed Java/JVM version: ${java.version}"/> 
+
 		<javac destdir="${class.dir}" debug="on" verbose="false">
 			<compilerarg value="-Xbootclasspath/p:${toString:classpath}"/>
 			<src path="${project.basedir}/sif3demo/src" />
