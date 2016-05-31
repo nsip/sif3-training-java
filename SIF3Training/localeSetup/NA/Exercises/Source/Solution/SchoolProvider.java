@@ -40,6 +40,7 @@ import sif3.common.exception.UnsupportedQueryException;
 import sif3.common.header.HeaderProperties;
 import sif3.common.model.PagingInfo;
 import sif3.common.model.RequestMetadata;
+import sif3.common.model.ResponseParameters;
 import sif3.common.model.SIFContext;
 import sif3.common.model.SIFZone;
 import sif3.common.utils.UUIDGenerator;
@@ -140,7 +141,7 @@ public class SchoolProvider extends BaseProvider
 	}
 
 	@Override
-	public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException
 	{
 		// Must be of type SchoolInfoType
 		if (data instanceof XSchoolType)
@@ -174,7 +175,7 @@ public class SchoolProvider extends BaseProvider
 	}
 
 	@Override
-	public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata) throws PersistenceException, UnsupportedQueryException
+	public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata, ResponseParameters customResponseParams) throws PersistenceException, UnsupportedQueryException
 	{
 		ArrayList<XSchoolType> schoolList = new ArrayList<XSchoolType>();
 		if (pagingInfo == null) //return all
@@ -223,7 +224,7 @@ public class SchoolProvider extends BaseProvider
 	 * Note: We pretend that each 3rd insert is a failure. This is for illustration purpose only!
 	 */
 	@Override
-	public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException
 	{
 		// Must be of type XSchoolCollectionType
 		if (data instanceof XSchoolCollectionType)
@@ -267,7 +268,7 @@ public class SchoolProvider extends BaseProvider
 	 * Exercise 5: Possible solution
 	 */
 	@Override
-	public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	public List<OperationStatus> updateMany(Object data, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException
 	{
 		// Must be of type XSchoolCollectionType
 		if (data instanceof XSchoolCollectionType)
@@ -300,7 +301,7 @@ public class SchoolProvider extends BaseProvider
 	 * Exercise 5: Possible solution
 	 */
 	@Override
-	public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	public List<OperationStatus> deleteMany(List<String> resourceIDs, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException
 	{
 		// In the real implementation we would call a BL method here to modify the School
 		ArrayList<OperationStatus> opStatus = new ArrayList<OperationStatus>();
@@ -320,7 +321,7 @@ public class SchoolProvider extends BaseProvider
 	}
 
 	@Override
-	public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	public Object retrievByPrimaryKey(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException
 	{
 		if (StringUtils.isEmpty(resourceID))
 		{
@@ -333,7 +334,7 @@ public class SchoolProvider extends BaseProvider
 	}
 
 	@Override
-	public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	public boolean updateSingle(Object data, String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException
 	{
 		if (StringUtils.isEmpty(resourceID))
 		{
@@ -355,7 +356,7 @@ public class SchoolProvider extends BaseProvider
 	}
 
 	@Override
-	public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata) throws IllegalArgumentException, PersistenceException
+	public boolean deleteSingle(String resourceID, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException
 	{
 		if (StringUtils.isEmpty(resourceID))
 		{
