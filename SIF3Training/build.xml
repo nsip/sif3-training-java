@@ -70,7 +70,7 @@
 	</target>
 	
 	<!-- ********************************************************************************************************************************************* -->
-	<!-- Prepare Training for a specifi8c Locale (i.e. AU, UK, NA)                                                                                     -->
+	<!-- Prepare Training for a specific Locale (i.e. AU, UK, NA)                                                                                      -->
 	<!-- =========================================================                                                                                     -->
 	<!-- This will configure the training project for a particluar Locale (i.e. AU, UK etc). This will copy source files into appropriate directories. -->
 	<!-- Care must be taken that this is only called at the start of the training, otherwise it will override potential source files that may have     -->
