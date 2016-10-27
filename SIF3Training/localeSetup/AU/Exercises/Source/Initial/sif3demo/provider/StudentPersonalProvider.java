@@ -26,12 +26,14 @@ import java.util.List;
 
 import javax.xml.bind.JAXBElement;
 
+import au.com.systemic.framework.utils.FileReaderWriter;
+import au.com.systemic.framework.utils.StringUtils;
 import sif.dd.au30.model.ObjectFactory;
+import sif.dd.au30.model.StudentListType;
 import sif.dd.au30.model.StudentPersonalCollectionType;
 import sif.dd.au30.model.StudentPersonalType;
 import sif.dd.au30.model.TeachingGroupCollectionType;
-import sif.dd.au30.model.TeachingGroupType.StudentList;
-import sif.dd.au30.model.TeachingGroupType.StudentList.TeachingGroupStudent;
+import sif.dd.au30.model.TeachingGroupStudentType;
 import sif3.common.conversion.ModelObjectInfo;
 import sif3.common.exception.DataTooLargeException;
 import sif3.common.exception.PersistenceException;
@@ -54,8 +56,6 @@ import sif3.common.ws.ErrorDetails;
 import sif3.common.ws.OperationStatus;
 import sif3demo.ModelObjectConstants;
 import sif3demo.provider.iterator.StudentPersonalIterator;
-import au.com.systemic.framework.utils.FileReaderWriter;
-import au.com.systemic.framework.utils.StringUtils;
 
 /**
  * @author Joerg Huber
@@ -121,12 +121,12 @@ public class StudentPersonalProvider extends AUDataModelProviderWithEvents<Stude
                     if ((classes != null) && (classes.getTeachingGroup() != null))
                     {   
                         // Get student list of first teaching group
-                        JAXBElement<StudentList> jaxbClassStudents = classes.getTeachingGroup().get(0).getStudentList();
+                        JAXBElement<StudentListType> jaxbClassStudents = classes.getTeachingGroup().get(0).getStudentList();
                         if (jaxbClassStudents != null)
                         {
                             teachingGroupStudents = new HashMap<String, StudentPersonalType>();
-                            StudentList classStudents = jaxbClassStudents.getValue();
-                            for (TeachingGroupStudent student : classStudents.getTeachingGroupStudent())
+                            StudentListType classStudents = jaxbClassStudents.getValue();
+                            for (TeachingGroupStudentType student : classStudents.getTeachingGroupStudent())
                             {
                                 teachingGroupStudents.put(student.getStudentPersonalRefId().getValue(), students.get(student.getStudentPersonalRefId().getValue()));
                             }
