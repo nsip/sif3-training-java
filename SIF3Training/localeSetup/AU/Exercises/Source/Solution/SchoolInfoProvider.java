@@ -24,8 +24,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
+import au.com.systemic.framework.utils.FileReaderWriter;
+import au.com.systemic.framework.utils.StringUtils;
 import sif.dd.au30.conversion.DataModelMarshalFactory;
 import sif.dd.au30.conversion.DataModelUnmarshalFactory;
 import sif.dd.au30.model.ObjectFactory;
@@ -49,8 +49,6 @@ import sif3.common.ws.ErrorDetails;
 import sif3.common.ws.OperationStatus;
 import sif3.infra.rest.provider.BaseProvider;
 import sif3demo.ModelObjectConstants;
-import au.com.systemic.framework.utils.FileReaderWriter;
-import au.com.systemic.framework.utils.StringUtils;
 
 /**
  * @author Joerg Huber
@@ -58,8 +56,6 @@ import au.com.systemic.framework.utils.StringUtils;
  */
 public class SchoolInfoProvider extends BaseProvider
 {
-	protected final Logger logger = Logger.getLogger(getClass());
-
 	private static DataModelUnmarshalFactory unmarshaller = new DataModelUnmarshalFactory();
 	private static DataModelMarshalFactory marshaller = new DataModelMarshalFactory();
 

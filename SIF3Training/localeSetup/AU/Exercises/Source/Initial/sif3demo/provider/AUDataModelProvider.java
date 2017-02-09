@@ -18,8 +18,6 @@
 
 package sif3demo.provider;
 
-import org.apache.log4j.Logger;
-
 import sif.dd.au30.conversion.DataModelMarshalFactory;
 import sif.dd.au30.conversion.DataModelUnmarshalFactory;
 import sif3.common.conversion.MarshalFactory;
@@ -41,8 +39,6 @@ import sif3.infra.rest.provider.BaseProvider;
  */
 public abstract class AUDataModelProvider extends BaseProvider
 {
-	protected final Logger logger = Logger.getLogger(getClass());
-
 	private static DataModelUnmarshalFactory unmarshaller = new DataModelUnmarshalFactory();
 	private static DataModelMarshalFactory marshaller = new DataModelMarshalFactory();
 

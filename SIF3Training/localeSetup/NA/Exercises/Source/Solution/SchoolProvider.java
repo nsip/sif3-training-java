@@ -24,8 +24,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 import sif.dd.us33.conversion.DataModelMarshalFactory;
 import sif.dd.us33.conversion.DataModelUnmarshalFactory;
 import sif.dd.us33.model.ObjectFactory;
@@ -58,8 +56,6 @@ import au.com.systemic.framework.utils.StringUtils;
  */
 public class SchoolProvider extends BaseProvider
 {
-	protected final Logger logger = Logger.getLogger(getClass());
-
 	private static DataModelUnmarshalFactory unmarshaller = new DataModelUnmarshalFactory();
 	private static DataModelMarshalFactory marshaller = new DataModelMarshalFactory();
 
