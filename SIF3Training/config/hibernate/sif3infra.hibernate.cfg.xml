@@ -16,7 +16,7 @@
         <!-- MySQL client/server -->
         <!-- ******************* -->
         <!-- property name="hibernate.default_schema">sif3_infra</property-->
-<!--  
+<!-- 
         <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/sif3_infra</property>
@@ -54,8 +54,7 @@
 
         <property name="dialect">sif3.common.persist.common.SQLiteDialect</property>
         <property name="connection.driver_class">org.sqlite.JDBC</property>
-        <property name="connection.url">jdbc:sqlite:/Development/GitHubRepositories/SIF3Training/SIF3Training/DB/Data/SIF3Infra.sqliteDB</property>
-        <!--property name="connection.url">jdbc:sqlite:/DEV/lunaWorkspace/SIF3Training/DB/Data/SIF3Infra.sqliteDB</property-->
+        <property name="connection.url">jdbc:sqlite:C:/Development/GitHubRepositories/SIF3Training/SIF3Training/DB/Data/SIF3Infra.sqliteDB</property>
         <property name="connection.username"></property>
         <property name="connection.password"></property>
 
