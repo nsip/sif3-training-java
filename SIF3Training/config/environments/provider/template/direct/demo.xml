@@ -1,4 +1,4 @@
-<environment type="DIRECT" xmlns="http://www.sifassociation.org/infrastructure/3.1">
+<environment type="DIRECT" xmlns="http://www.sifassociation.org/infrastructure/3.2.1">
     <sessionToken></sessionToken>
     <solutionId></solutionId>
     <defaultZone id="DemoZone">
@@ -8,8 +8,8 @@
     <consumerName></consumerName>
     <applicationInfo>
         <applicationKey></applicationKey>
-        <supportedInfrastructureVersion>3.1</supportedInfrastructureVersion>
-        <dataModelNamespace>http://www.sifassociation.org/au/datamodel/3.4</dataModelNamespace>
+        <supportedInfrastructureVersion>3.2.1</supportedInfrastructureVersion>
+        <dataModelNamespace>http://www.sifassociation.org/datamodel/au/3.4.1</dataModelNamespace>
         <transport>REST</transport>
         <applicationProduct>
             <vendorName>Systemic Pty Ltd</vendorName>

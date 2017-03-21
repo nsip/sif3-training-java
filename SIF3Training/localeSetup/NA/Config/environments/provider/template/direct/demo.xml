@@ -1,4 +1,4 @@
-<environment type="DIRECT" xmlns="http://www.sifassociation.org/infrastructure/3.1">
+<environment type="DIRECT" xmlns="http://www.sifassociation.org/infrastructure/3.2.1">
     <sessionToken></sessionToken>
     <solutionId></solutionId>
     <defaultZone id="DemoZone">
@@ -8,7 +8,7 @@
     <consumerName></consumerName>
     <applicationInfo>
         <applicationKey></applicationKey>
-        <supportedInfrastructureVersion>3.1</supportedInfrastructureVersion>
+        <supportedInfrastructureVersion>3.2.1</supportedInfrastructureVersion>
         <dataModelNamespace>http://www.sifassociation.org/datamodel/na/3.3</dataModelNamespace>
         <transport>REST</transport>
         <applicationProduct>
