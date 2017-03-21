@@ -30,6 +30,9 @@ this README.txt for details on how to configure the training project for the Nor
 This version changes the exercises for NA to use the SIF xPress 3.3 Data Model. It also added
 service path exercises.
 
+## Version from March 21, 2017: Updated Infrastructure to 3.2.1
+Updated all libraries and sample files to infrastructure 3.2.1. Also updated AU exercises to SIF AU 3.4.1.
+
 # Download Instructions
 
 How to download this project:
