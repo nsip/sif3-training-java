@@ -7,12 +7,12 @@
     <applicationInfo>
         <applicationKey></applicationKey>
         <supportedInfrastructureVersion>3.2.1</supportedInfrastructureVersion>
-        <dataModelNamespace>http://www.sifassociation.org/au/datamodel/3.4</dataModelNamespace>
+        <dataModelNamespace>http://www.sifassociation.org/datamodel/au/3.4</dataModelNamespace>
         <transport>REST</transport>
         <applicationProduct>
             <vendorName>Systemic Pty Ltd</vendorName>
             <productName>HITS Consumer</productName>
-            <productVersion>0.1alpha</productVersion>
+            <productVersion>0.12.0-beta</productVersion>
         </applicationProduct>
     </applicationInfo>
 </environment>
