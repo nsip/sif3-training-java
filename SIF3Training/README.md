@@ -33,6 +33,9 @@ service path exercises.
 ## Version from March 21, 2017: Updated Infrastructure to 3.2.1
 Updated all libraries and sample files to infrastructure 3.2.1. Also updated AU exercises to SIF AU 3.4.1.
 
+## Version from March 27, 2018: Updated to SIF3 Framework v0.13.0
+Updated all libraries and sample files to infrastructure 3.2.1. Also updated AU exercises to SIF AU 3.4.3.
+
 # Download Instructions
 
 How to download this project:

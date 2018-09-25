@@ -47,7 +47,7 @@ public class StudentPersonalConsumer extends AbstractConsumer
     @Override
     public MarshalFactory getMarshaller()
     {
-	    // TODO Auto-generated method stub
+        //TODO: Exercise 2: return the data model marshaller for SIF AU...
 	    return null;
     }
 
@@ -57,7 +57,7 @@ public class StudentPersonalConsumer extends AbstractConsumer
     @Override
     public UnmarshalFactory getUnmarshaller()
     {
-      // TODO Auto-generated method stub
+        //TODO: Exercise 2: return the data model unmarshaller for SIF AU...
       return null;
     }
 
@@ -67,7 +67,7 @@ public class StudentPersonalConsumer extends AbstractConsumer
     @Override
     public ModelObjectInfo getMultiObjectClassInfo()
     {
-	    // TODO Auto-generated method stub
+        //TODO: Exercise 2: return the data model for StudentPersonals (refer to ModelObjectConstant class :-)).
 	    return null;
     }
 
@@ -77,7 +77,7 @@ public class StudentPersonalConsumer extends AbstractConsumer
     @Override
     public ModelObjectInfo getSingleObjectClassInfo()
     {
-	    // TODO Auto-generated method stub
+        //TODO: Exercise 2: return the data model for StudentPersonal (refer to ModelObjectConstant class :-)).
 	    return null;
     }
 
