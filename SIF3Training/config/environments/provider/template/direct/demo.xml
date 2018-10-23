@@ -85,6 +85,12 @@
                     <right type="ADMIN">REJECTED</right>
                   </rights>
                 </service>
+                <service name="FQReportings" contextId="DEFAULT">
+                  <rights>
+                    <right type="QUERY">APPROVED</right>
+                    <right type="CREATE">APPROVED</right>
+                  </rights>
+                </service>
             </services>            
         </provisionedZone>
     </provisionedZones>
