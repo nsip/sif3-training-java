@@ -39,6 +39,9 @@ Updated all libraries and sample files to infrastructure 3.2.1. Also updated AU 
 ## Version from October 2, 2018: Updated to SIF3 Framework v0.14.0
 - Project is now based on **Java 8**. It also includes the latest SIF3 Framework Libraries that support Functional services.
 
+## Version from October 23, 2018: Added FQ Use-Case Exercises.
+- Exercises for FQ Use-Case added and updated to SIF AU 3.4.4 draft data model.
+
 # Download Instructions
 
 How to download this project:
