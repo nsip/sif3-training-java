@@ -534,20 +534,21 @@ public class StudentPersonalProvider extends AUDataModelProviderWithEvents<Stude
     	else
     	{
     		pagingInfo.setTotalObjects(studentMap.size());
-    		if ((pagingInfo.getPageSize() * (pagingInfo.getCurrentPageNo())) > studentMap.size())
-    		{
-    			return null; // Requested page outside of limits.
-    		}
-    		
-    		// retrieve applicable students
-    		Collection<StudentPersonalType> allStudent = studentMap.values();
-    		int i = 0;
-    		int startPos = pagingInfo.getPageSize() * pagingInfo.getCurrentPageNo();
-    		int endPos = startPos + pagingInfo.getPageSize();
-    		for (Iterator<StudentPersonalType> iter = allStudent.iterator(); iter.hasNext();)
-    		{
-    			StudentPersonalType student = iter.next();
-    			if ((i>=startPos) && (i<endPos))
+            int startPos = pagingInfo.getPageSize() * (pagingInfo.getCurrentPageNo() - 1);
+            int endPos = startPos + pagingInfo.getPageSize() - 1;
+            logger.debug("Start Position = "+startPos+"    End Position = "+endPos);
+            if (startPos >= studentMap.size())
+            {
+                return null; // Requested page outside of limits.
+            }
+            
+            // retrieve applicable students
+            Collection<StudentPersonalType> allStudent = studentMap.values();
+            int i = 0;
+            for (Iterator<StudentPersonalType> iter = allStudent.iterator(); iter.hasNext();)
+            {
+                StudentPersonalType student = iter.next();
+                if ((i>=startPos) && (i<=endPos))
     			{
     				studentList.add(student);
     			}

@@ -1,7 +1,7 @@
 /*
  * DemoConsumer.java Created: 12/08/2014
  * 
- * Copyright 2014 Systemic Pty Ltd
+ * Copyright 2014-2018 Systemic Pty Ltd
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -18,13 +18,19 @@ package sif3demo.service;
 
 import java.util.List;
 
+import au.com.systemic.framework.utils.AdvancedProperties;
+import au.com.systemic.framework.utils.FileReaderWriter;
 import sif.dd.au30.conversion.DataModelUnmarshalFactory;
+import sif.dd.au30.model.FQReportingCollectionType;
+import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.StudentPersonalCollectionType;
+import sif3.common.conversion.MarshalFactory;
 import sif3.common.header.HeaderValues.RequestType;
 import sif3.common.ws.Response;
+import sif3.infra.common.env.mgr.ConsumerEnvironmentManager;
 import sif3.infra.rest.consumer.ConsumerLoader;
+import sif3demo.consumer.FQReportingConsumer;
 import sif3demo.consumer.StudentPersonalConsumer;
-import au.com.systemic.framework.utils.FileReaderWriter;
 
 /**
  * @author Joerg Huber
@@ -32,17 +38,46 @@ import au.com.systemic.framework.utils.FileReaderWriter;
  */
 public class DemoConsumer
 {
-//	private final static String SINGLE_STUDENT_FILE_NAME = "C:/DEV/eclipseWorkspace/SIF3Training/TestData/xml/input/StudentPersonal.xml";
-//	private final static String MULTI_STUDENT_FILE_NAME = "C:/DEV/eclipseWorkspace/SIF3Training/TestData/xml/input/StudentPersonals5.xml";
-//	private final static String SINGLE_STUDENT_FILE_NAME = "C:/Development/GitHubRepositories/SIF3Training/SIF3Training/TestData/xml/input/StudentPersonal.xml";
-	private final static String MULTI_STUDENT_FILE_NAME = "C:/Development/GitHubRepositories/SIF3Training/SIF3Training/TestData/xml/input/StudentPersonals5.xml";
+    // All paths below are relative to the install directory of this project.
+//	private final static String SINGLE_STUDENT_FILE_NAME = "/TestData/xml/input/StudentPersonal.xml";
+//	private final static String MULTI_STUDENT_FILE_NAME = "/TestData/xml/input/StudentPersonals5.xml";
+//	private final static String SINGLE_STUDENT_FILE_NAME = "/TestData/xml/input/StudentPersonal.xml";
+	private final static String MULTI_STUDENT_FILE_NAME = "/TestData/xml/input/StudentPersonals5.xml";
+    private final static String MULTI_FQ_FILE_NAME = "/TestData/xml/input/FQReportings.xml";
 	private static final String CONSUMER_ID = "StudentConsumer";
 //    private static final String CONSUMER_ID = "HITSStudentConsumer";
 	
 	private static final RequestType REQUEST_TYPE = RequestType.IMMEDIATE;
+
+	private ObjectFactory of = new ObjectFactory();
+	private String rootInstallDir = null;
+
+	public DemoConsumer() throws Exception
+	{
+        if (ConsumerLoader.initialise(CONSUMER_ID))
+        {
+            AdvancedProperties properties = ConsumerEnvironmentManager.getInstance().getServiceProperties();
+            rootInstallDir = properties.getPropertyAsString("test.install.root.dir", null);
+            System.out.println("Root Install Dir is '"+rootInstallDir+"'");
+            if (rootInstallDir == null)
+            {
+                shutdown();
+                throw new Exception("Please set the property 'test.install.root.dir' in the file '"+CONSUMER_ID+".properties' to the value of the install directory of this project.");
+            }
+        }
+        else
+        {
+            throw new Exception("Failed to initialise consumer. See previous error log entries.");
+        }
+	}
+	
+	public void shutdown()
+	{
+	    ConsumerLoader.shutdown();
+	}
 	
 	@SuppressWarnings("unused")
-    private void printResponses(List<Response> responses, StudentPersonalConsumer consumer)
+    private void printResponses(List<Response> responses, MarshalFactory marshaller)
 	{
 		try
 		{
@@ -60,7 +95,7 @@ public class DemoConsumer
 					{
 						if (response.getHasEntity())
 						{
-							System.out.println("Data Object Response "+i+": "+consumer.getMarshaller().marshalToXML(response.getDataObject()));
+							System.out.println("Data Object Response "+i+": "+marshaller.marshalToXML(response.getDataObject()));
 						}
 						else
 						{
@@ -72,7 +107,7 @@ public class DemoConsumer
 			}
 			else
 			{
-				System.out.println("Responses from attempt to create Student: null");				
+				System.out.println("Responses retrieved: null");				
 			}
 		}
 		catch (Exception ex)
@@ -81,31 +116,49 @@ public class DemoConsumer
 		}
 	}
 	
-  @SuppressWarnings("unused")
-  private StudentPersonalCollectionType loadStudents(DataModelUnmarshalFactory unmarshaller)
-  {
-    String inputEnvXML = FileReaderWriter.getFileContent(MULTI_STUDENT_FILE_NAME);
-    try
+    @SuppressWarnings("unused")
+    private StudentPersonalCollectionType loadStudents(DataModelUnmarshalFactory unmarshaller)
     {
-      return (StudentPersonalCollectionType) unmarshaller.unmarshalFromXML(inputEnvXML, StudentPersonalCollectionType.class);
+        String inputEnvXML = FileReaderWriter.getFileContent(rootInstallDir+MULTI_STUDENT_FILE_NAME);
+        try
+        {
+            return (StudentPersonalCollectionType) unmarshaller.unmarshalFromXML(inputEnvXML, StudentPersonalCollectionType.class);
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            return null;
+        }
     }
-    catch (Exception ex)
-    {
-      ex.printStackTrace();
-      return null;
-    }
-  }
 
-	
-	private StudentPersonalConsumer getConsumer()
+    @SuppressWarnings("unused")
+    private FQReportingCollectionType loadFQReports(DataModelUnmarshalFactory unmarshaller)
+    {
+        String inputEnvXML = FileReaderWriter.getFileContent(rootInstallDir+MULTI_FQ_FILE_NAME);
+        try
+        {
+            return (FQReportingCollectionType) unmarshaller.unmarshalFromXML(inputEnvXML, FQReportingCollectionType.class);
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+	private StudentPersonalConsumer getStudentConsumer()
 	{
 		return new StudentPersonalConsumer();
 	}
 
-	
-	/* -----------------------
-	 * Section for Exercise 2
-	 ------------------------*/
+    private FQReportingConsumer getFQConsumer()
+    {
+        return new FQReportingConsumer();
+    }
+
+	/* ----------------------------------
+	 * Section for Exercise 2 - Option 1
+	 ----------------------------------*/
 	private void getStudents(StudentPersonalConsumer consumer)
 	{
 		System.out.println("Start 'Get List of Students' ...");
@@ -113,7 +166,7 @@ public class DemoConsumer
 		//TODO: Exercise 2: Call to get a list of students using paging! => consumer.retrieve(...)
 		
 		//System.out.println("Responses from attempt to Get List of Students:");
-		//printResponses(responses, consumer);
+		//printResponses(responses, consumer.getMarshaller());
 		
 		System.out.println("Finished 'Get List of Students'.");
 	}
@@ -125,38 +178,70 @@ public class DemoConsumer
 		//TODO: Exercise 2: Call to get single student... use paging! => consumer.retrievByPrimaryKey(...)
 		
 		//System.out.println("Responses from attempt to Get Single Student:");
-		//printResponses(responses, consumer);
+		//printResponses(responses, consumer.getMarshaller());
 		
 		System.out.println("Finished 'Get Single Student'.");
 	}
-  /* -----------------------------
-   * End of Section for Exercise 2
-   -------------------------------*/
-	
+	/* ---------------------------------------
+     * End Section for Exercise 2 - Option 1
+     ----------------------------------------*/
 
-  /* -----------------------
-   * Section for Exercise 4
-   ------------------------*/
-  private void deleteStudents(StudentPersonalConsumer consumer)
-  {
-    System.out.println("Start 'Delete List of Students' ...");
+	/* -----------------------------------
+     * Section for Exercise 2 - Option 2
+     ------------------------------------*/
+    private void submitFQ(FQReportingConsumer consumer)
+    {
+        System.out.println("Start 'Submit/Create List of FQReporting Objects' ...");
 
-    //TODO: Exercise 4: Call to delete a list of students => consumer.deleteMany(...)
-    
-    System.out.println("Finished 'Delete List of Students'.");
-  }
+        //TODO: Exercise 2: A FQReportingCollectionType must be populated first ...
+        // Option 1: Load data from a file (see loadFQReports() method in this class.
+        // Option 2: Manually create a FQReportingCollectionType object and populate it with data
+        
+        //TODO: submit the FQReportingCollectionType object by calling the "createMany" method on the
+        //      consumer. 
+        //List<BulkOperationResponse<CreateOperationStatus>> responses = consumer.createMany(...);
+       
+        //System.out.println("Responses from attempt to Submit/Create List of FQReporting Objects:" + responses);
+    }
 
-  private void updateStudent(StudentPersonalConsumer consumer)
-  {
-    System.out.println("Start 'Update List of Students'...");
+    private void getFQ(FQReportingConsumer consumer)
+    {
+        System.out.println("Start 'Get List of FQReporting Objects'...");
 
-    //TODO: Exercise 4: Call to update a list of student => consumer.updateMany(...)
-    
-    System.out.println("Finished 'Update List of Students'.");
-  }
-  /* -----------------------------
-   * End of Section for Exercise 4
-   -------------------------------*/
+        //TODO: Exercise 2: Call to get a list of FQReporting using paging! => consumer.retrieve(...)
+        
+        //System.out.println("Responses from attempt to Get List of FQReporting Objects:");
+        //printResponses(responses, consumer.getMarshaller());
+        
+        System.out.println("Finished 'Get List of FQReporting Objects'.");
+    }
+    /* ---------------------------------------
+     * End Section for Exercise 2 - Option 2
+     ---------------------------------------*/
+
+	/* -----------------------
+	 * Section for Exercise 4
+     ------------------------*/
+    private void deleteStudents(StudentPersonalConsumer consumer)
+    {
+        System.out.println("Start 'Delete List of Students' ...");
+
+        // TODO: Exercise 4: Call to delete a list of students => consumer.deleteMany(...)
+
+        System.out.println("Finished 'Delete List of Students'.");
+    }
+
+    private void updateStudent(StudentPersonalConsumer consumer)
+    {
+        System.out.println("Start 'Update List of Students'...");
+
+        // TODO: Exercise 4: Call to update a list of student => consumer.updateMany(...)
+
+        System.out.println("Finished 'Update List of Students'.");
+    }
+    /* -----------------------------
+     * End of Section for Exercise 4
+     -------------------------------*/
 
 	/*
 	 * ----------------------------------
@@ -180,7 +265,7 @@ public class DemoConsumer
 		    //        Refer to Javadoc for details of the parameters to use.
 		
 			//Step 3: Print out the result - comment out the line below....
-			//printResponses(responses, consumer);
+			//printResponses(responses, consumer.getMarshaller());
 		}
 		catch (Exception ex)
 		{
@@ -198,26 +283,50 @@ public class DemoConsumer
 
 	public static void main(String[] args)
 	{
-		DemoConsumer demo = new DemoConsumer();
-		System.out.println("Start DemoConsumer...");
+	    try
+	    {
+            System.out.println("Start DemoConsumer...");
+    		DemoConsumer demo = new DemoConsumer();
+    		    
+			StudentPersonalConsumer studentConsumer = demo.getStudentConsumer();
+			FQReportingConsumer fqConsumer = demo.getFQConsumer();
 
-		if (ConsumerLoader.initialise(CONSUMER_ID))
-		{
-			StudentPersonalConsumer consumer = demo.getConsumer();
+			//
+			// Exercise 2: You can choose to implement Student methods (Option 1) or FQ Methods (Option 2)
+			//             Depending on the option, you need to un-comment out the appropriate methods.
+			
+			// Use for Exercise 2 - Option 1: Student Methods
+			//demo.getStudent(studentConsumer); // Implement that method ...
+			//demo.getStudents(studentConsumer); // Implement that method ...
 
-			// Use for Exercise 2
-			demo.getStudent(consumer);
-			demo.getStudents(consumer);
+	        // Use for Exercise 2 - Option : FQ Methods
+			//demo.submitFQ(fqConsumer); // Implement that method ...
+			//demo.getFQ(fqConsumer); // Implement that method ...
 			
-			// Use for Exercise 4 - uncomment the 2 lines below
-			//demo.deleteStudents(consumer);
-			//demo.updateStudent(consumer);
+            //
+            // End Exercise 2
+			//
 			
+            //
+            // End Exercise 4 - uncomment the 2 lines below
+			//
+			
+			//demo.deleteStudents(studentConsumer); // Implement that method ...
+			//demo.updateStudent(studentConsumer); // Implement that method ...
+			
+            //
+            // End Exercise 4
+            //
+
 			// Use for Exercise: Service Path - uncomment the line below
-			//demo.getStudentsByServicePath("TeachingGroups", "64A309DA063A2E35B359D75101A8C3D1", consumer);
-		}
+			//demo.getStudentsByServicePath("TeachingGroups", "64A309DA063A2E35B359D75101A8C3D1", studentConsumer); // Implement that method ...
 
-		ConsumerLoader.shutdown();
+			demo.shutdown();
+	    }
+	    catch (Exception ex)
+	    {
+	        System.out.println(ex.getMessage());
+	    }
 		System.out.println("End DemoConsumer.");
 	}
 }

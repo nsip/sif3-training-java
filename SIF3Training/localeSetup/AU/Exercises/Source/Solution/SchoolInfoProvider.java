@@ -31,6 +31,7 @@ import sif.dd.au30.conversion.DataModelUnmarshalFactory;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.SchoolInfoCollectionType;
 import sif.dd.au30.model.SchoolInfoType;
+import sif.dd.au30.model.StudentPersonalType;
 import sif3.common.conversion.MarshalFactory;
 import sif3.common.conversion.ModelObjectInfo;
 import sif3.common.conversion.UnmarshalFactory;
@@ -179,20 +180,22 @@ public class SchoolInfoProvider extends BaseProvider
     else
     {
       pagingInfo.setTotalObjects(schools.size());
-      if ((pagingInfo.getPageSize() * (pagingInfo.getCurrentPageNo())) > schools.size())
+
+      int startPos = pagingInfo.getPageSize() * (pagingInfo.getCurrentPageNo() - 1);
+      int endPos = startPos + pagingInfo.getPageSize() - 1;
+      logger.debug("Start Position = "+startPos+"    End Position = "+endPos);
+      if (startPos >= schools.size())
       {
-        return null; // Requested page outside of limits.
+          return null; // Requested page outside of limits.
       }
       
       // retrieve applicable school
       Collection<SchoolInfoType> allSchools = schools.values();
       int i = 0;
-      int startPos = pagingInfo.getPageSize() * pagingInfo.getCurrentPageNo();
-      int endPos = startPos + pagingInfo.getPageSize();
       for (Iterator<SchoolInfoType> iter = allSchools.iterator(); iter.hasNext();)
       {
         SchoolInfoType school = iter.next();
-        if ((i>=startPos) && (i<endPos))
+        if ((i>=startPos) && (i<=endPos))
         {
           schoolList.add(school);
         }
