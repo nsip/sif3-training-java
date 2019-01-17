@@ -42,6 +42,9 @@ Updated all libraries and sample files to infrastructure 3.2.1. Also updated AU 
 ## Version from October 23, 2018: Added FQ Use-Case Exercises.
 - Exercises for FQ Use-Case added and updated to SIF AU 3.4.4 draft data model.
 
+## Version from Jan 22, 2019: Updates SIF3 Framework Library v0.14.0
+- New libraries support XQUERYTEMPLATE functionality also known as Named Query Templates.
+
 # Download Instructions
 
 How to download this project:
