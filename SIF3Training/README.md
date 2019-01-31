@@ -45,6 +45,9 @@ Updated all libraries and sample files to infrastructure 3.2.1. Also updated AU 
 ## Version from Jan 22, 2019: Updates SIF3 Framework Library v0.14.0
 - New libraries support XQUERYTEMPLATE functionality also known as Named Query Templates.
 
+## Version from Jan 31, 2019: Updates SIF3 Framework Library v0.14.1
+- New libraries support for Dynamic Queries
+
 # Download Instructions
 
 How to download this project:
