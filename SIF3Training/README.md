@@ -48,6 +48,9 @@ Updated all libraries and sample files to infrastructure 3.2.1. Also updated AU 
 ## Version from Jan 31, 2019: Updates SIF3 Framework Library v0.14.1
 - New libraries support for Dynamic Queries
 
+## Version from Feb 19, 2019: Updates Exercises for AU FQ Use-Case
+- Exercises for FQ Use-Case updated to match officially released SIF AU 3.4.4 data model.
+
 # Download Instructions
 
 How to download this project:
