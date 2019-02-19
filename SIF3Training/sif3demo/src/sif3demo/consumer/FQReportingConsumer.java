@@ -18,8 +18,6 @@
 
 package sif3demo.consumer;
 
-import sif.dd.au30.conversion.DataModelMarshalFactory;
-import sif.dd.au30.conversion.DataModelUnmarshalFactory;
 import sif3.common.conversion.MarshalFactory;
 import sif3.common.conversion.ModelObjectInfo;
 import sif3.common.conversion.UnmarshalFactory;
@@ -31,7 +29,6 @@ import sif3.common.ws.ErrorDetails;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.model.MultiOperationStatusList;
 import sif3.infra.rest.consumer.AbstractConsumer;
-import sif3demo.ModelObjectConstants;
 
 /**
  * <b>WARNING</b><br/> 
@@ -45,21 +42,19 @@ import sif3demo.ModelObjectConstants;
  */
 public class FQReportingConsumer extends AbstractConsumer
 {	
-    private static DataModelUnmarshalFactory unmarshaller = new DataModelUnmarshalFactory();
-    private static DataModelMarshalFactory marshaller = new DataModelMarshalFactory();
-
     public FQReportingConsumer()
     {
 	    super();
     }
 
-    /* (non-Javadoc)
+	/* (non-Javadoc)
      * @see sif3.common.interfaces.DataModelLink#getMarshaller()
      */
     @Override
     public MarshalFactory getMarshaller()
     {
-        return marshaller;
+        //TODO: Exercise 2: return the data model marshaller for SIF AU...
+	    return null;
     }
 
     /* (non-Javadoc)
@@ -68,7 +63,8 @@ public class FQReportingConsumer extends AbstractConsumer
     @Override
     public UnmarshalFactory getUnmarshaller()
     {
-      return unmarshaller;
+        //TODO: Exercise 2: return the data model unmarshaller for SIF AU...
+      return null;
     }
 
     /* (non-Javadoc)
@@ -77,16 +73,18 @@ public class FQReportingConsumer extends AbstractConsumer
     @Override
     public ModelObjectInfo getMultiObjectClassInfo()
     {
-        return ModelObjectConstants.FQREPORTING_OBJECTS;
+        //TODO: Exercise 2: return the data model for FQReportingObjects (refer to ModelObjectConstant class :-)).
+	    return null;
     }
 
-    /* (non-Javadoc)
+	/* (non-Javadoc)
      * @see sif3.common.interfaces.DataModelLink#getSingleObjectClassInfo()
      */
     @Override
     public ModelObjectInfo getSingleObjectClassInfo()
     {
-        return ModelObjectConstants.FQREPORTING_OBJECT;
+        //TODO: Exercise 2: return the data model for FQReportingObject (refer to ModelObjectConstant class :-)).
+	    return null;
     }
 
 

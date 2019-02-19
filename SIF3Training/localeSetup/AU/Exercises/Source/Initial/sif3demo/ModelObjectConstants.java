@@ -18,8 +18,8 @@
 
 package sif3demo;
 
-import sif.dd.au30.model.FQReportingCollectionType;
-import sif.dd.au30.model.FQReportingType;
+import sif.dd.au30.model.FinancialQuestionnaireSubmissionCollectionType;
+import sif.dd.au30.model.FinancialQuestionnaireSubmissionType;
 import sif.dd.au30.model.SchoolInfoCollectionType;
 import sif.dd.au30.model.SchoolInfoType;
 import sif.dd.au30.model.StudentDailyAttendanceCollectionType;
@@ -46,7 +46,7 @@ public class ModelObjectConstants
 	public static final ModelObjectInfo STUDENT_DAILY_ATTENDANCE  = new ModelObjectInfo("StudentDailyAttendance", StudentDailyAttendanceType.class);
 	public static final ModelObjectInfo TEACHING_GROUPS           = new ModelObjectInfo("TeachingGroups", TeachingGroupCollectionType.class);
 	public static final ModelObjectInfo TEACHING_GROUP            = new ModelObjectInfo("TeachingGroups", TeachingGroupType.class);
-    public static final ModelObjectInfo FQREPORTING_OBJECTS       = new ModelObjectInfo("FQReportings", FQReportingCollectionType.class);
-    public static final ModelObjectInfo FQREPORTING_OBJECT        = new ModelObjectInfo("FQReporting", FQReportingType.class);
+    public static final ModelObjectInfo FQSUMISSION_OBJECTS       = new ModelObjectInfo("FinancialQuestionnaireSubmissions", FinancialQuestionnaireSubmissionCollectionType.class);
+    public static final ModelObjectInfo FQSUMISSION_OBJECT        = new ModelObjectInfo("FinancialQuestionnaireSubmission", FinancialQuestionnaireSubmissionType.class);
 
 }

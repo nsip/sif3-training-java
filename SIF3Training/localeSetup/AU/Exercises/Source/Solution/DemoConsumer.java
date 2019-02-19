@@ -19,12 +19,15 @@ package sif3demo.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import au.com.systemic.framework.utils.AdvancedProperties;
 import au.com.systemic.framework.utils.FileReaderWriter;
-
 import sif.dd.au30.conversion.DataModelUnmarshalFactory;
-import sif.dd.au30.model.FQReportingCollectionType;
 import sif.dd.au30.model.FQReportingType;
+import sif.dd.au30.model.FinancialQuestionnaireSubmissionType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.StudentPersonalCollectionType;
 import sif3.common.conversion.MarshalFactory;
@@ -36,14 +39,12 @@ import sif3.common.model.QueryCriteria;
 import sif3.common.model.ServicePathPredicate;
 import sif3.common.utils.UUIDGenerator;
 import sif3.common.ws.BulkOperationResponse;
-import sif3.common.ws.CreateOperationStatus;
 import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
 import sif3.infra.common.env.mgr.ConsumerEnvironmentManager;
 import sif3.infra.rest.consumer.ConsumerLoader;
 import sif3demo.consumer.FQReportingConsumer;
 import sif3demo.consumer.StudentPersonalConsumer;
-import sif3demo.service.DemoConsumer;
 
 /**
  * @author Joerg Huber
@@ -56,7 +57,8 @@ public class DemoConsumer
 //  private final static String MULTI_STUDENT_FILE_NAME = "/TestData/xml/input/StudentPersonals5.xml";
 //  private final static String SINGLE_STUDENT_FILE_NAME = "/TestData/xml/input/StudentPersonal.xml";
     private final static String MULTI_STUDENT_FILE_NAME = "/TestData/xml/input/StudentPersonals5.xml";
-    private final static String MULTI_FQ_FILE_NAME = "/TestData/xml/input/FQReportings.xml";
+//    private final static String MULTI_FQ_FILE_NAME = "/TestData/xml/input/FQReportings.xml";
+    private final static String SINGLE_FINSUBMISSION_FILE_NAME = "/TestData/xml/input/FinancialQuestionnaireSubmission.xml";
     private static final String CONSUMER_ID = "StudentConsumer";
 //    private static final String CONSUMER_ID = "HITSStudentConsumer";
     
@@ -146,12 +148,12 @@ public class DemoConsumer
 	}
 
     @SuppressWarnings("unused")
-    private FQReportingCollectionType loadFQReports(DataModelUnmarshalFactory unmarshaller)
+    private FinancialQuestionnaireSubmissionType loadFQReports(DataModelUnmarshalFactory unmarshaller)
     {
-        String inputEnvXML = FileReaderWriter.getFileContent(rootInstallDir+MULTI_FQ_FILE_NAME);
+        String inputEnvXML = FileReaderWriter.getFileContent(rootInstallDir+SINGLE_FINSUBMISSION_FILE_NAME);
         try
         {
-            return (FQReportingCollectionType) unmarshaller.unmarshalFromXML(inputEnvXML, FQReportingCollectionType.class);
+            return (FinancialQuestionnaireSubmissionType) unmarshaller.unmarshalFromXML(inputEnvXML, FinancialQuestionnaireSubmissionType.class);
         }
         catch (Exception ex)
         {
@@ -225,51 +227,68 @@ public class DemoConsumer
      ------------------------------------*/
     private void submitFQ(FQReportingConsumer consumer)
     {
-        System.out.println("Start 'Submit/Create List of FQReporting Objects' ...");
+        System.out.println("Start 'Submit/Create List of FinancialQuestionnaireSubmission Objects' ...");
 
         // Option 1: Load data from a file (see loadFQReports() method in this class.
         try
         {
-            FQReportingCollectionType fqs = loadFQReports((DataModelUnmarshalFactory)consumer.getUnmarshaller());
-            List<BulkOperationResponse<CreateOperationStatus>> responses = consumer.createMany(fqs, null, REQUEST_TYPE);
-            System.out.println("Responses from attempt to Submit/Create List of FQReporting Objects:" + responses);
+            FinancialQuestionnaireSubmissionType fqs = loadFQReports((DataModelUnmarshalFactory)consumer.getUnmarshaller());
+            List<Response> responses = consumer.createSingle(fqs, null);
+            
+            System.out.println("Responses from attempt to Submit/Create List of FinancialQuestionnaireSubmission Objects:" + responses);
         }
         catch (IllegalArgumentException | PersistenceException | ServiceInvokationException e)
         {
             e.printStackTrace();
         }
         
-        // Option 2: Manually create a FQReportingCollectionType object and populate it with data
+        // Option 2: Manually create a FinancialQuestionnaireSubmissionType object and populate it with data
         try
         {
-            FQReportingCollectionType fqs = new FQReportingCollectionType();
+            FinancialQuestionnaireSubmissionType fqs = new FinancialQuestionnaireSubmissionType();
+            fqs.setRefId(UUIDGenerator.getUUID());
+            
+            XMLGregorianCalendar xgc = DatatypeFactory.newInstance().newXMLGregorianCalendar();
+            xgc.setYear(2018);
+            fqs.setFQYear(xgc);
+            fqs.setReportingAuthority(of.createFinancialQuestionnaireSubmissionTypeReportingAuthority("Ballarat Diocese"));
+            fqs.setReportingAuthoritySystem(of.createFinancialQuestionnaireSubmissionTypeReportingAuthoritySystem("Catholic"));
+            
+            // Start reporting list...
+            fqs.setFQReportingList(of.createFinancialQuestionnaireSubmissionTypeFQReportingList(of.createFQReportingListType()));
+            
             FQReportingType fq = new FQReportingType();
-            fq.setRefId(UUIDGenerator.getUUID());
+            fq.setFQRefId(of.createFQReportingTypeFQRefId(UUIDGenerator.getUUID()));
             fq.setLocalId(of.createFQReportingTypeLocalId("1198"));
             fq.setACARAId(of.createFQReportingTypeACARAId("A4099"));
-            fq.setReportingAuthority(of.createFQReportingTypeReportingAuthority("St. Mary College"));
-            fq.setReportingAuthoritySystem(of.createFQReportingTypeReportingAuthoritySystem("Catholic"));
+            fq.setSchoolInfoRefId(of.createFQReportingTypeSchoolInfoRefId("C4D54B35-9D75-101A-8C3D-00AA001A1689"));
+            fqs.getFQReportingList().getValue().getFQReporting().add(fq);
+            
+            fq = new FQReportingType();
+            fq.setFQRefId(of.createFQReportingTypeFQRefId(UUIDGenerator.getUUID()));
+            fq.setLocalId(of.createFQReportingTypeLocalId("01011234"));
+            fq.setACARAId(of.createFQReportingTypeACARAId("99007"));
+            fq.setSchoolInfoRefId(of.createFQReportingTypeSchoolInfoRefId("C4D54B35-9D75-101A-8C3D-00AA001A1688"));
+            fqs.getFQReportingList().getValue().getFQReporting().add(fq);
+
             // etc...
-            
-            fqs.getFQReporting().add(fq);
-            
-            List<BulkOperationResponse<CreateOperationStatus>> responses = consumer.createMany(fqs, null, REQUEST_TYPE);
-            System.out.println("Responses from attempt to Submit/Create List of FQReporting Objects:" + responses);
+
+            List<Response> responses = consumer.createSingle(fqs, null);
+            System.out.println("Responses from attempt to Submit/Create List of FinancialQuestionnaireSubmission Objects:" + responses);
         }
-        catch (IllegalArgumentException | PersistenceException | ServiceInvokationException e)
+        catch (IllegalArgumentException | PersistenceException | ServiceInvokationException | DatatypeConfigurationException e)
         {
             e.printStackTrace();
         }
-        
     }
 
     private void getFQ(FQReportingConsumer consumer)
     {
-        System.out.println("Start 'Get List of FQReporting Objects'...");
+        System.out.println("Start 'Get List of FinancialQuestionnaireSubmission Objects'...");
         try
         {
             List<Response> responses = consumer.retrieve(new PagingInfo(10, 1), null, REQUEST_TYPE);
-            System.out.println("Responses from attempt to Get All FQ Reports:");
+            System.out.println("Responses from attempt to Get All Financial Questionnaire Submission:");
             printResponses(responses, consumer.getMarshaller());
         }
         catch (Exception ex)
@@ -277,7 +296,7 @@ public class DemoConsumer
             ex.printStackTrace();
         }
 
-        System.out.println("Finished 'Get List of FQReporting Objects'.");
+        System.out.println("Finished 'Get List of FinancialQuestionnaireSubmission Objects'.");
     }
     
     /* ---------------------------------------

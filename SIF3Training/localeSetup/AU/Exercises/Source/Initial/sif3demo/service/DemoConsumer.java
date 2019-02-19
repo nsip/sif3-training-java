@@ -21,7 +21,8 @@ import java.util.List;
 import au.com.systemic.framework.utils.AdvancedProperties;
 import au.com.systemic.framework.utils.FileReaderWriter;
 import sif.dd.au30.conversion.DataModelUnmarshalFactory;
-import sif.dd.au30.model.FQReportingCollectionType;
+import sif.dd.au30.model.FinancialQuestionnaireSubmissionCollectionType;
+import sif.dd.au30.model.FinancialQuestionnaireSubmissionType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.StudentPersonalCollectionType;
 import sif3.common.conversion.MarshalFactory;
@@ -43,7 +44,8 @@ public class DemoConsumer
 //	private final static String MULTI_STUDENT_FILE_NAME = "/TestData/xml/input/StudentPersonals5.xml";
 //	private final static String SINGLE_STUDENT_FILE_NAME = "/TestData/xml/input/StudentPersonal.xml";
 	private final static String MULTI_STUDENT_FILE_NAME = "/TestData/xml/input/StudentPersonals5.xml";
-    private final static String MULTI_FQ_FILE_NAME = "/TestData/xml/input/FQReportings.xml";
+//  private final static String MULTI_FQ_FILE_NAME = "/TestData/xml/input/FQReportings.xml";
+    private final static String SINGLE_FINSUBMISSION_FILE_NAME = "/TestData/xml/input/FinancialQuestionnaireSubmission.xml";
 	private static final String CONSUMER_ID = "StudentConsumer";
 //    private static final String CONSUMER_ID = "HITSStudentConsumer";
 	
@@ -132,12 +134,12 @@ public class DemoConsumer
     }
 
     @SuppressWarnings("unused")
-    private FQReportingCollectionType loadFQReports(DataModelUnmarshalFactory unmarshaller)
+    private FinancialQuestionnaireSubmissionType loadFQReports(DataModelUnmarshalFactory unmarshaller)
     {
-        String inputEnvXML = FileReaderWriter.getFileContent(rootInstallDir+MULTI_FQ_FILE_NAME);
+        String inputEnvXML = FileReaderWriter.getFileContent(rootInstallDir+SINGLE_FINSUBMISSION_FILE_NAME);
         try
         {
-            return (FQReportingCollectionType) unmarshaller.unmarshalFromXML(inputEnvXML, FQReportingCollectionType.class);
+            return (FinancialQuestionnaireSubmissionType) unmarshaller.unmarshalFromXML(inputEnvXML, FinancialQuestionnaireSubmissionType.class);
         }
         catch (Exception ex)
         {
@@ -191,29 +193,30 @@ public class DemoConsumer
      ------------------------------------*/
     private void submitFQ(FQReportingConsumer consumer)
     {
-        System.out.println("Start 'Submit/Create List of FQReporting Objects' ...");
+        System.out.println("Start 'Submit/Create List of FinancialQuestionnaireSubmission Objects' ...");
 
-        //TODO: Exercise 2: A FQReportingCollectionType must be populated first ...
+        //TODO: Exercise 2: A FinancialQuestionnaireSubmissionType must be populated first ...
         // Option 1: Load data from a file (see loadFQReports() method in this class.
-        // Option 2: Manually create a FQReportingCollectionType object and populate it with data
+        // Option 2: Manually create a FinancialQuestionnaireSubmissionType object and populate it with data
         
-        //TODO: submit the FQReportingCollectionType object by calling the "createMany" method on the
+        //TODO: submit the FinancialQuestionnaireSubmissionType object by calling the "createSingle" method on the
         //      consumer. 
-        //List<BulkOperationResponse<CreateOperationStatus>> responses = consumer.createMany(...);
+        //List<Response> responses = consumer.createSingle(...);
        
-        //System.out.println("Responses from attempt to Submit/Create List of FQReporting Objects:" + responses);
+        //System.out.println("Responses from attempt to Submit/Create List of FinancialQuestionnaireSubmission Objects:" + responses);
     }
 
     private void getFQ(FQReportingConsumer consumer)
     {
-        System.out.println("Start 'Get List of FQReporting Objects'...");
+        System.out.println("Start 'Get List of FinancialQuestionnaireSubmission Objects'...");
 
-        //TODO: Exercise 2: Call to get a list of FQReporting using paging! => consumer.retrieve(...)
+        //TODO: Exercise 2: Call to get a list of FinancialQuestionnaireSubmission using paging! => consumer.retrieve(...)
         
-        //System.out.println("Responses from attempt to Get List of FQReporting Objects:");
+        //System.out.println("Responses from attempt to Get All Financial Questionnaire Submission:");
         //printResponses(responses, consumer.getMarshaller());
+
         
-        System.out.println("Finished 'Get List of FQReporting Objects'.");
+        System.out.println("Finished 'Get List of FinancialQuestionnaireSubmission Objects'.");
     }
     /* ---------------------------------------
      * End Section for Exercise 2 - Option 2

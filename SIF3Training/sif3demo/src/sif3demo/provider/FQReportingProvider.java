@@ -27,8 +27,8 @@ import java.util.List;
 import au.com.systemic.framework.utils.StringUtils;
 import sif.dd.au30.conversion.DataModelMarshalFactory;
 import sif.dd.au30.conversion.DataModelUnmarshalFactory;
-import sif.dd.au30.model.FQReportingCollectionType;
-import sif.dd.au30.model.FQReportingType;
+import sif.dd.au30.model.FinancialQuestionnaireSubmissionCollectionType;
+import sif.dd.au30.model.FinancialQuestionnaireSubmissionType;
 import sif.dd.au30.model.ObjectFactory;
 import sif3.common.conversion.MarshalFactory;
 import sif3.common.conversion.ModelObjectInfo;
@@ -57,7 +57,7 @@ public class FQReportingProvider extends BaseProvider
     private static DataModelUnmarshalFactory unmarshaller = new DataModelUnmarshalFactory();
     private static DataModelMarshalFactory marshaller = new DataModelMarshalFactory();
 
-    private static HashMap<String, FQReportingType> fqs = new HashMap<String, FQReportingType>();
+    private static HashMap<String, FinancialQuestionnaireSubmissionType> fqs = new HashMap<String, FinancialQuestionnaireSubmissionType>();
 
     private ObjectFactory dmObjectFactory = new ObjectFactory();
 
@@ -85,22 +85,22 @@ public class FQReportingProvider extends BaseProvider
     @Override
     public ModelObjectInfo getSingleObjectClassInfo()
     {
-        return ModelObjectConstants.FQREPORTING_OBJECT;
+        return ModelObjectConstants.FQSUMISSION_OBJECT;
     }
 
     @Override
     public ModelObjectInfo getMultiObjectClassInfo()
     {
-        return ModelObjectConstants.FQREPORTING_OBJECTS;
+        return ModelObjectConstants.FQSUMISSION_OBJECTS;
     }
 
     @Override
     public Object createSingle(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException
     {
         // Must be of type FQReportingType
-        if (data instanceof FQReportingType)
+        if (data instanceof FinancialQuestionnaireSubmissionType)
         {
-            FQReportingType fq = (FQReportingType)data;
+            FinancialQuestionnaireSubmissionType fq = (FinancialQuestionnaireSubmissionType)data;
             if (useAdvisory)
             {
                 if (StringUtils.isEmpty(fq.getRefId())) //should use advisory but is empty => we must allocate
@@ -124,7 +124,7 @@ public class FQReportingProvider extends BaseProvider
         }
         else
         {
-            throw new IllegalArgumentException("Expected Object Type  = FQReportingObjectType. Received Object Type = "+data.getClass().getSimpleName());
+            throw new IllegalArgumentException("Expected Object Type  = FinancialQuestionnaireSubmissionType. Received Object Type = "+data.getClass().getSimpleName());
         }
     }
 
@@ -144,7 +144,7 @@ public class FQReportingProvider extends BaseProvider
     @Override
     public Object retrieve(SIFZone zone, SIFContext context, PagingInfo pagingInfo, RequestMetadata metadata, ResponseParameters customResponseParams) throws PersistenceException, UnsupportedQueryException
     {
-        ArrayList<FQReportingType> fqList = new ArrayList<FQReportingType>();
+        ArrayList<FinancialQuestionnaireSubmissionType> fqList = new ArrayList<FinancialQuestionnaireSubmissionType>();
         if (pagingInfo == null) //return all
         {
             fqList.addAll(fqs.values());
@@ -162,11 +162,11 @@ public class FQReportingProvider extends BaseProvider
             }
       
             // retrieve applicable FQ Objects
-            Collection<FQReportingType> allFQs = fqs.values();
+            Collection<FinancialQuestionnaireSubmissionType> allFQs = fqs.values();
             int i = 0;
-            for (Iterator<FQReportingType> iter = allFQs.iterator(); iter.hasNext();)
+            for (Iterator<FinancialQuestionnaireSubmissionType> iter = allFQs.iterator(); iter.hasNext();)
             {
-                FQReportingType fq = iter.next();
+                FinancialQuestionnaireSubmissionType fq = iter.next();
                 if ((i>=startPos) && (i<=endPos))
                 {
                     fqList.add(fq);
@@ -175,8 +175,8 @@ public class FQReportingProvider extends BaseProvider
             }
         }
     
-        FQReportingCollectionType fqCollection = dmObjectFactory.createFQReportingCollectionType();
-        fqCollection.getFQReporting().addAll(fqList);
+        FinancialQuestionnaireSubmissionCollectionType fqCollection = dmObjectFactory.createFinancialQuestionnaireSubmissionCollectionType();
+        fqCollection.getFinancialQuestionnaireSubmission().addAll(fqList);
         return fqCollection;
     }
 
@@ -184,12 +184,12 @@ public class FQReportingProvider extends BaseProvider
     public List<CreateOperationStatus> createMany(Object data, boolean useAdvisory, SIFZone zone, SIFContext context, RequestMetadata metadata, ResponseParameters customResponseParams) throws IllegalArgumentException, PersistenceException
     {
         // Must be of type FQReportingObjectCollectionType
-        if (data instanceof FQReportingCollectionType)
+        if (data instanceof FinancialQuestionnaireSubmissionCollectionType)
         {
             logger.debug("Create schools (Bulk Operation)");
-            FQReportingCollectionType fqCollection = (FQReportingCollectionType)data;
+            FinancialQuestionnaireSubmissionCollectionType fqCollection = (FinancialQuestionnaireSubmissionCollectionType)data;
             ArrayList<CreateOperationStatus> opStatus = new ArrayList<CreateOperationStatus>();
-            for (FQReportingType fq : fqCollection.getFQReporting())
+            for (FinancialQuestionnaireSubmissionType fq : fqCollection.getFinancialQuestionnaireSubmission())
             {
                 if (useAdvisory)
                 {

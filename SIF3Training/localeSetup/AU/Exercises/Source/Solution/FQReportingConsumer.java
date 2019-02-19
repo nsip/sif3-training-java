@@ -77,7 +77,7 @@ public class FQReportingConsumer extends AbstractConsumer
     @Override
     public ModelObjectInfo getMultiObjectClassInfo()
     {
-        return ModelObjectConstants.FQREPORTING_OBJECTS;
+        return ModelObjectConstants.FQSUMISSION_OBJECTS;
     }
 
     /* (non-Javadoc)
@@ -86,7 +86,7 @@ public class FQReportingConsumer extends AbstractConsumer
     @Override
     public ModelObjectInfo getSingleObjectClassInfo()
     {
-        return ModelObjectConstants.FQREPORTING_OBJECT;
+        return ModelObjectConstants.FQSUMISSION_OBJECT;
     }
 
 
