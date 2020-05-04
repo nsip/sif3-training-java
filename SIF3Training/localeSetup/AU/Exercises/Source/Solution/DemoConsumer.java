@@ -26,8 +26,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import au.com.systemic.framework.utils.AdvancedProperties;
 import au.com.systemic.framework.utils.FileReaderWriter;
 import sif.dd.au30.conversion.DataModelUnmarshalFactory;
-import sif.dd.au30.model.FQReportingType;
-import sif.dd.au30.model.FinancialQuestionnaireSubmissionType;
+//import sif.dd.au30.model.FQReportingType;
+//import sif.dd.au30.model.FinancialQuestionnaireSubmissionType;
 import sif.dd.au30.model.ObjectFactory;
 import sif.dd.au30.model.StudentPersonalCollectionType;
 import sif3.common.conversion.MarshalFactory;
@@ -43,7 +43,7 @@ import sif3.common.ws.OperationStatus;
 import sif3.common.ws.Response;
 import sif3.infra.common.env.mgr.ConsumerEnvironmentManager;
 import sif3.infra.rest.consumer.ConsumerLoader;
-import sif3demo.consumer.FQReportingConsumer;
+//import sif3demo.consumer.FQReportingConsumer;
 import sif3demo.consumer.StudentPersonalConsumer;
 
 /**
@@ -58,7 +58,7 @@ public class DemoConsumer
 //  private final static String SINGLE_STUDENT_FILE_NAME = "/TestData/xml/input/StudentPersonal.xml";
     private final static String MULTI_STUDENT_FILE_NAME = "/TestData/xml/input/StudentPersonals5.xml";
 //    private final static String MULTI_FQ_FILE_NAME = "/TestData/xml/input/FQReportings.xml";
-    private final static String SINGLE_FINSUBMISSION_FILE_NAME = "/TestData/xml/input/FinancialQuestionnaireSubmission.xml";
+//    private final static String SINGLE_FINSUBMISSION_FILE_NAME = "/TestData/xml/input/FinancialQuestionnaireSubmission.xml";
     private static final String CONSUMER_ID = "StudentConsumer";
 //    private static final String CONSUMER_ID = "HITSStudentConsumer";
     
@@ -147,6 +147,13 @@ public class DemoConsumer
 		}
 	}
 
+    private StudentPersonalConsumer getStudentConsumer()
+    {
+        return new StudentPersonalConsumer();
+    }
+
+	// Removed in SIF AU 3.4.6
+/*
     @SuppressWarnings("unused")
     private FinancialQuestionnaireSubmissionType loadFQReports(DataModelUnmarshalFactory unmarshaller)
     {
@@ -161,16 +168,12 @@ public class DemoConsumer
             return null;
         }
     }
-
-    private StudentPersonalConsumer getStudentConsumer()
-    {
-        return new StudentPersonalConsumer();
-    }
-
+    
     private FQReportingConsumer getFQConsumer()
     {
         return new FQReportingConsumer();
     }
+*/
 
     /* ----------------------------------
      * Section for Exercise 2 - Option 1
@@ -225,6 +228,8 @@ public class DemoConsumer
     /* -----------------------------------
      * Section for Exercise 2 - Option 2
      ------------------------------------*/
+	// Removed in SIF AU 3.4.6
+/*
     private void submitFQ(FQReportingConsumer consumer)
     {
         System.out.println("Start 'Submit/Create List of FinancialQuestionnaireSubmission Objects' ...");
@@ -298,7 +303,7 @@ public class DemoConsumer
 
         System.out.println("Finished 'Get List of FinancialQuestionnaireSubmission Objects'.");
     }
-    
+*/    
     /* ---------------------------------------
      * End Section for Exercise 2 - Option 2
      ---------------------------------------*/
@@ -443,8 +448,7 @@ public class DemoConsumer
             DemoConsumer demo = new DemoConsumer();
                 
             StudentPersonalConsumer studentConsumer = demo.getStudentConsumer();
-            FQReportingConsumer fqConsumer = demo.getFQConsumer();
-
+            
             //
             // Exercise 2: You can choose to implement Student methods (Option 1) or FQ Methods (Option 2)
             //             Depending on the option, you need to un-comment out the appropriate methods.
@@ -453,10 +457,15 @@ public class DemoConsumer
             //demo.getStudent(studentConsumer); // Implement that method ...
             //demo.getStudents(studentConsumer); // Implement that method ...
 
+
+            // Removed in SIF AU 3.4.6
+/*
+            //FQReportingConsumer fqConsumer = demo.getFQConsumer();
+
             // Use for Exercise 2 - Option : FQ Methods
             //demo.submitFQ(fqConsumer); // Implement that method ...
             //demo.getFQ(fqConsumer); // Implement that method ...
-            
+*/            
             //
             // End Exercise 2
             //
